@@ -1,0 +1,1091 @@
+[
+  {
+    "id": "sodium-benzoate",
+    "name": "苯甲酸钠",
+    "aliases": ["苯甲酸", "Sodium Benzoate", "INS 211", "CNS 17.001"],
+    "category": "防腐剂",
+    "function": "抑制细菌和真菌生长，延长保质期，在酸性环境中效果最好。",
+    "hazards": "在国标限量内使用是安全的。大剂量可能刺激胃肠道；与维生素C（抗坏血酸）在特定条件下可能生成微量苯，敏感人群建议避免大量同时摄入。",
+    "commonFoods": ["碳酸饮料", "酱油", "蜜饯", "醋"]
+  },
+  {
+    "id": "potassium-sorbate",
+    "name": "山梨酸钾",
+    "aliases": ["山梨酸", "Potassium Sorbate", "INS 202", "CNS 17.003"],
+    "category": "防腐剂",
+    "function": "广谱防腐剂，主要抑制霉菌和酵母菌，毒性较低，是目前应用最广的防腐剂之一。",
+    "hazards": "限量内安全性高，在体内可正常代谢。少数人可能出现轻微过敏反应。相比苯甲酸钠，通常被认为是更温和的选择。",
+    "commonFoods": ["面包糕点", "奶酪", "饮料", "酱菜"]
+  },
+  {
+    "id": "sodium-dehydroacetate",
+    "name": "脱氢乙酸钠",
+    "aliases": ["脱氢醋酸", "Sodium Dehydroacetate", "CNS 17.012"],
+    "category": "防腐剂",
+    "function": "对霉菌和酵母有较强抑制作用，常用于烘焙食品防腐。",
+    "hazards": "限量内使用安全。中国自2025年起新标准已禁止其用于面包、糕点等烘焙食品，主要因动物实验显示较高剂量下的安全风险。",
+    "commonFoods": ["面包", "糕点", "月饼", "淀粉制品"]
+  },
+  {
+    "id": "calcium-propionate",
+    "name": "丙酸钙",
+    "aliases": ["丙酸", "Calcium Propionate", "INS 282"],
+    "category": "防腐剂",
+    "function": "抑制霉菌和引起面包拉丝的芽孢杆菌，是面包烘焙业最常用的防腐剂。",
+    "hazards": "限量内安全，丙酸是人体代谢中间产物。个别研究提示可能与儿童行为问题相关，但证据不充分，敏感人群可留意。",
+    "commonFoods": ["面包", "蛋糕", "豆制品"]
+  },
+  {
+    "id": "sodium-propionate",
+    "name": "丙酸钠",
+    "aliases": ["Sodium Propionate", "INS 281"],
+    "category": "防腐剂",
+    "function": "与丙酸钙作用类似的防霉剂，多用于糕点和豆制品。",
+    "hazards": "限量内安全，在体内正常代谢。",
+    "commonFoods": ["糕点", "豆制品", "奶酪"]
+  },
+  {
+    "id": "sodium-nitrite",
+    "name": "亚硝酸钠",
+    "aliases": ["亚硝酸盐", "Sodium Nitrite", "INS 250"],
+    "category": "防腐剂",
+    "function": "用于腌肉制品，抑制肉毒杆菌并赋予腌肉特有的粉红色和风味。",
+    "hazards": "过量摄入可致急性中毒（缺氧、发绀）。在胃酸环境下可与胺类生成亚硝胺（潜在致癌物），因此应控制加工肉制品的摄入量。国标对其残留量有严格限制。",
+    "commonFoods": ["火腿肠", "培根", "腊肠", "午餐肉"]
+  },
+  {
+    "id": "sodium-nitrate",
+    "name": "硝酸钠",
+    "aliases": ["硝酸盐", "Sodium Nitrate", "INS 251"],
+    "category": "防腐剂",
+    "function": "腌制肉类发色和防腐，作用缓慢持久，常与亚硝酸钠配合使用。",
+    "hazards": "可在体内还原为亚硝酸盐，风险与亚硝酸盐类似，需控制加工肉摄入总量。",
+    "commonFoods": ["腌腊肉制品", "西式火腿"]
+  },
+  {
+    "id": "sodium-diacetate",
+    "name": "双乙酸钠",
+    "aliases": ["二醋酸钠", "Sodium Diacetate"],
+    "category": "防腐剂",
+    "function": "兼具防霉和调味（醋酸风味）作用。",
+    "hazards": "限量内安全，代谢产物为醋酸和钠，高钠饮食人群留意总钠摄入。",
+    "commonFoods": ["复合调味料", "豆制品", "谷物制品"]
+  },
+  {
+    "id": "natamycin",
+    "name": "纳他霉素",
+    "aliases": ["Natamycin", "游霉素", "INS 235"],
+    "category": "防腐剂",
+    "function": "天然抗真菌剂，常用于奶酪、肉制品表面喷涂防霉。",
+    "hazards": "几乎不被肠道吸收，限量内安全性高。口服不进入血液循环，一般无全身性影响。",
+    "commonFoods": ["奶酪表面", "肉制品表面", "果蔬汁"]
+  },
+  {
+    "id": "nisin",
+    "name": "乳酸链球菌素",
+    "aliases": ["乳链菌肽", "Nisin", "INS 234"],
+    "category": "防腐剂",
+    "function": "天然多肽类防腐剂，抑制革兰氏阳性菌，在体内被消化降解。",
+    "hazards": "作为天然多肽可被人体消化酶降解，安全性高，被多国批准使用。",
+    "commonFoods": ["乳制品", "罐头", "肉制品"]
+  },
+  {
+    "id": "sulfur-dioxide",
+    "name": "二氧化硫",
+    "aliases": ["亚硫酸盐", "Sulfur Dioxide", "INS 220"],
+    "category": "漂白剂",
+    "function": "漂白、防腐和抗氧化，防止水果褐变，葡萄酒中用于抑制杂菌。",
+    "hazards": "哮喘患者可能对亚硫酸盐敏感，诱发呼吸不适。限量内对一般人群安全，标签上残留量超标的产品需标注。",
+    "commonFoods": ["葡萄酒", "干果", "蜜饯", "干制蔬菜"]
+  },
+  {
+    "id": "sodium-sulfite",
+    "name": "亚硫酸钠",
+    "aliases": ["焦亚硫酸钠", "Sodium Sulfite", "INS 221"],
+    "category": "漂白剂",
+    "function": "漂白和抗氧化，防止食品变色变味。",
+    "hazards": "同二氧化硫，哮喘及敏感人群需留意；超量使用会破坏维生素B1。",
+    "commonFoods": ["蜜饯", "粉丝", "干果"]
+  },
+  {
+    "id": "aspartame",
+    "name": "阿斯巴甜",
+    "aliases": ["Aspartame", "蛋白糖", "INS 951"],
+    "category": "甜味剂",
+    "function": "高倍代糖（甜度约为蔗糖200倍），几乎无热量，广泛用于无糖饮料。",
+    "hazards": "2023年IARC将其列为2B类'可能致癌物'（证据有限），JECFA维持每日允许摄入量40mg/kg体重，正常饮用量远低于此。含苯丙氨酸，苯丙酮尿症患者严禁食用。",
+    "commonFoods": ["无糖可乐", "口香糖", "代糖酸奶"]
+  },
+  {
+    "id": "acesulfame-k",
+    "name": "安赛蜜",
+    "aliases": ["乙酰磺胺酸钾", "Acesulfame K", "AK糖", "INS 950"],
+    "category": "甜味剂",
+    "function": "高倍代糖（约为蔗糖200倍），耐热性好，常与阿斯巴甜复配使用。",
+    "hazards": "限量内使用被各国监管机构认定为安全，不参与代谢、无热量。",
+    "commonFoods": ["无糖饮料", "蜜饯", "烘焙食品"]
+  },
+  {
+    "id": "sucralose",
+    "name": "三氯蔗糖",
+    "aliases": ["蔗糖素", "Sucralose", "INS 955"],
+    "category": "甜味剂",
+    "function": "以蔗糖为原料合成的高倍代糖（约为蔗糖600倍），口感接近蔗糖，无热量。",
+    "hazards": "限量内被认定为安全，绝大部分不被人体吸收。近期有研究关注其高温加热产物，正常食用量下无需担心。",
+    "commonFoods": ["无糖饮料", "蛋白棒", "代糖甜品"]
+  },
+  {
+    "id": "saccharin-sodium",
+    "name": "糖精钠",
+    "aliases": ["糖精", "Saccharin Sodium", "INS 954"],
+    "category": "甜味剂",
+    "function": "最早的人工甜味剂（约为蔗糖300-500倍），无热量，后味略苦。",
+    "hazards": "历史上曾因动物实验被质疑，后被证实与人类癌症无关，限量内使用安全。",
+    "commonFoods": ["蜜饯", "瓜子炒货", "酱菜"]
+  },
+  {
+    "id": "sodium-cyclamate",
+    "name": "甜蜜素",
+    "aliases": ["环己基氨基磺酸钠", "Sodium Cyclamate", "INS 952"],
+    "category": "甜味剂",
+    "function": "高倍代糖（约为蔗糖30-50倍），常与其他代糖复配改善口感。",
+    "hazards": "限量内安全。美国因早期动物实验禁用，但中国、欧盟、WHO评估认为限量内安全；少量人群肠道菌群可将其转化为环己胺，需控制在限量内。",
+    "commonFoods": ["饮料", "蜜饯", "糕点"]
+  },
+  {
+    "id": "stevioside",
+    "name": "甜菊糖苷",
+    "aliases": ["甜菊素", "Steviol Glycosides", "INS 960"],
+    "category": "甜味剂",
+    "function": "从甜叶菊中提取的天然高倍代糖（约为蔗糖200-300倍），无热量。",
+    "hazards": "天然来源，限量内使用安全，被广泛认可为天然代糖选择。",
+    "commonFoods": ["无糖茶饮", "饮料", "调味品"]
+  },
+  {
+    "id": "erythritol",
+    "name": "赤藓糖醇",
+    "aliases": ["Erythritol", "INS 968"],
+    "category": "甜味剂",
+    "function": "糖醇类代糖（甜度约为蔗糖70%），几乎零热量，口感清凉，是'0糖0卡'饮料的主力。",
+    "hazards": "耐受性在糖醇中最好，但大量摄入仍可能引起肠胃胀气。2023年有研究提示其血液高水平与心血管风险相关，尚需更多证据，适量食用无虞。",
+    "commonFoods": ["气泡水", "无糖饮料", "代糖巧克力"]
+  },
+  {
+    "id": "xylitol",
+    "name": "木糖醇",
+    "aliases": ["Xylitol", "INS 967"],
+    "category": "甜味剂",
+    "function": "糖醇类代糖，甜度与蔗糖相当，不致龋齿，常用于护齿口香糖。",
+    "hazards": "过量摄入（尤其一次性大量）会引起腹泻和腹胀。对狗有剧毒，养狗家庭需避免宠物误食。",
+    "commonFoods": ["口香糖", "薄荷糖", "牙膏"]
+  },
+  {
+    "id": "sorbitol",
+    "name": "山梨糖醇",
+    "aliases": ["山梨醇", "Sorbitol", "INS 420"],
+    "category": "甜味剂",
+    "function": "糖醇类代糖兼保湿剂，甜度约为蔗糖60%，保持食品湿润柔软。",
+    "hazards": "摄入过多有明显致泻作用，肠易激综合征（IBS）人群尤其敏感。",
+    "commonFoods": ["无糖糖果", "果酱", "烘焙食品"]
+  },
+  {
+    "id": "maltitol",
+    "name": "麦芽糖醇",
+    "aliases": ["Maltitol", "INS 965"],
+    "category": "甜味剂",
+    "function": "糖醇类代糖，口感接近蔗糖，广泛用于无糖巧克力和糕点。",
+    "hazards": "升糖指数低于蔗糖但并非为零，糖尿病患者仍需计入总量；大量摄入易致腹胀腹泻。",
+    "commonFoods": ["无糖巧克力", "无糖糕点", "冰淇淋"]
+  },
+  {
+    "id": "mannitol",
+    "name": "甘露糖醇",
+    "aliases": ["甘露醇", "Mannitol", "INS 421"],
+    "category": "甜味剂",
+    "function": "糖醇类代糖，吸湿性小，用于糖果表面防粘。",
+    "hazards": "大量摄入有缓泻作用，限量内安全。",
+    "commonFoods": ["糖果", "压片糖果", "胶基糖果"]
+  },
+  {
+    "id": "lactitol",
+    "name": "乳糖醇",
+    "aliases": ["乳酮糖", "Lactitol", "INS 966"],
+    "category": "甜味剂",
+    "function": "糖醇类代糖，热量约为蔗糖一半，甜度约为蔗糖40%。",
+    "hazards": "大量摄入可能导致腹泻；乳糖不耐者一般也可耐受。",
+    "commonFoods": ["无糖冰淇淋", "巧克力"]
+  },
+  {
+    "id": "isomalt",
+    "name": "异麦芽酮糖醇",
+    "aliases": ["益寿糖", "Isomalt", "INS 953"],
+    "category": "甜味剂",
+    "function": "糖醇类代糖，不致龋齿，用于无糖硬糖和压片糖果。",
+    "hazards": "大量摄入（>20-30g/天）可能致腹泻，限量内安全。",
+    "commonFoods": ["无糖硬糖", "喉糖"]
+  },
+  {
+    "id": "neotame",
+    "name": "纽甜",
+    "aliases": ["Neotame", "INS 961"],
+    "category": "甜味剂",
+    "function": "超高倍代糖（约为蔗糖8000倍），用量极微，稳定性好。",
+    "hazards": "限量内被认定为安全，苯丙酮尿症患者限制较阿斯巴甜宽松，但仍建议留意。",
+    "commonFoods": ["饮料", "烘焙食品", "调味品"]
+  },
+  {
+    "id": "thaumatin",
+    "name": "索马甜",
+    "aliases": ["非洲竹芋甜素", "Thaumatin", "INS 957"],
+    "category": "甜味剂",
+    "function": "从西非竹芋果实提取的天然蛋白质甜味剂，甜度极高，用量极微。",
+    "hazards": "作为天然蛋白质可被消化，安全性高，无已知健康风险。",
+    "commonFoods": ["饮料", "冷冻甜品"]
+  },
+  {
+    "id": "advantame",
+    "name": "爱德万甜",
+    "aliases": ["Advantame", "INS 969"],
+    "category": "甜味剂",
+    "function": "超高倍代糖（约为蔗糖2万倍），甜度高、用量极微。",
+    "hazards": "限量内被各国监管机构认定为安全。",
+    "commonFoods": ["饮料", "糖果"]
+  },
+  {
+    "id": "monk-fruit-extract",
+    "name": "罗汉果甜苷",
+    "aliases": ["罗汉果提取物", "Monk Fruit Extract", "Mogrosides"],
+    "category": "甜味剂",
+    "function": "从罗汉果中提取的天然高倍代糖（约为蔗糖300倍），无热量。",
+    "hazards": "天然来源，安全性高，无明显已知风险。",
+    "commonFoods": ["代糖饮料", "茶饮", "甜品"]
+  },
+  {
+    "id": "glycyrrhizin",
+    "name": "甘草酸",
+    "aliases": ["甘草酸一钾", "甘草甜素", "Glycyrrhizin", "INS 958"],
+    "category": "甜味剂",
+    "function": "从甘草中提取的天然甜味剂兼风味改良剂，有持久回甘。",
+    "hazards": "长期大量摄入可能引起假性醛固酮增多症（血压升高、低血钾），高血压人群应控制含甘草食品的摄入；正常食品用量下安全。",
+    "commonFoods": ["蜜饯", "话梅", "凉茶"]
+  },
+  {
+    "id": "bha",
+    "name": "丁基羟基茴香醚",
+    "aliases": ["BHA", "INS 320"],
+    "category": "抗氧化剂",
+    "function": "合成抗氧化剂，防止油脂氧化哈败，延长含油食品保质期。",
+    "hazards": "IARC列为2B类'可能致癌物'（基于大剂量动物实验），国标限量内使用安全，但部分品牌已主动弃用。",
+    "commonFoods": ["油炸食品", "方便面", "饼干"]
+  },
+  {
+    "id": "bht",
+    "name": "二丁基羟基甲苯",
+    "aliases": ["BHT", "INS 321"],
+    "category": "抗氧化剂",
+    "function": "合成抗氧化剂，与BHA类似，防止油脂酸败。",
+    "hazards": "大剂量动物实验显示肝肾影响，限量内使用被认定为安全；部分国家在婴幼儿食品中禁用。",
+    "commonFoods": ["薯片", "谷物早餐", "口香糖"]
+  },
+  {
+    "id": "tbhq",
+    "name": "特丁基对苯二酚",
+    "aliases": ["TBHQ", "INS 319"],
+    "category": "抗氧化剂",
+    "function": "高效合成抗氧化剂，特别适合煎炸用油的稳定。",
+    "hazards": "国标限量内安全；超高剂量动物实验出现不良影响，正常摄入量远低于风险剂量。",
+    "commonFoods": ["方便面", "油炸零食", "食用油"]
+  },
+  {
+    "id": "propyl-gallate",
+    "name": "没食子酸丙酯",
+    "aliases": ["PG", "Propyl Gallate", "INS 310"],
+    "category": "抗氧化剂",
+    "function": "抗氧化剂，常与BHA/BHT协同使用。",
+    "hazards": "限量内安全，少数人可能出现皮肤过敏反应。",
+    "commonFoods": ["油脂", "油炸食品", "肉制品"]
+  },
+  {
+    "id": "ascorbic-acid",
+    "name": "抗坏血酸",
+    "aliases": ["维生素C", "Vitamin C", "Ascorbic Acid", "INS 300"],
+    "category": "抗氧化剂",
+    "function": "即维生素C，抗氧化、护色，并作为面粉改良剂和营养强化剂。",
+    "hazards": "安全性极高，是水溶性维生素，多余的会随尿液排出。",
+    "commonFoods": ["饮料", "面包", "肉制品", "果蔬罐头"]
+  },
+  {
+    "id": "ascorbyl-palmitate",
+    "name": "抗坏血酸棕榈酸酯",
+    "aliases": ["Ascorbyl Palmitate", "INS 304"],
+    "category": "抗氧化剂",
+    "function": "脂溶性维生素C衍生物，用于油脂和含油食品抗氧化。",
+    "hazards": "限量内安全，在体内水解为维生素C。",
+    "commonFoods": ["食用油", "奶粉", "油脂制品"]
+  },
+  {
+    "id": "tocopherol",
+    "name": "生育酚",
+    "aliases": ["维生素E", "Tocopherol", "INS 306"],
+    "category": "抗氧化剂",
+    "function": "天然维生素E，油脂抗氧化剂，也作营养强化。",
+    "hazards": "天然成分，限量内安全。",
+    "commonFoods": ["食用油", "婴幼儿食品", "坚果制品"]
+  },
+  {
+    "id": "tea-polyphenols",
+    "name": "茶多酚",
+    "aliases": ["Tea Polyphenols", "维多酚"],
+    "category": "抗氧化剂",
+    "function": "从茶叶中提取的天然抗氧化剂，抗氧化能力优于维生素E。",
+    "hazards": "天然提取物，限量内安全。",
+    "commonFoods": ["饮料", "油脂", "肉制品"]
+  },
+  {
+    "id": "rosemary-extract",
+    "name": "迷迭香提取物",
+    "aliases": ["Rosemary Extract", "INS 392"],
+    "category": "抗氧化剂",
+    "function": "天然植物抗氧化剂，是BHA/BHT的天然替代方案，日益普及。",
+    "hazards": "天然来源，限量内安全，无已知显著风险。",
+    "commonFoods": ["肉制品", "食用油", "零食"]
+  },
+  {
+    "id": "sodium-erythorbate",
+    "name": "D-异抗坏血酸钠",
+    "aliases": ["异维生素C钠", "Sodium Erythorbate", "INS 316"],
+    "category": "抗氧化剂",
+    "function": "抗氧化护色剂，防止肉制品和罐头氧化变色，成本低于维生素C。",
+    "hazards": "限量内安全，无显著已知风险。",
+    "commonFoods": ["火腿肠", "罐头", "瓶装饮料"]
+  },
+  {
+    "id": "edta-disodium",
+    "name": "EDTA二钠",
+    "aliases": ["乙二胺四乙酸二钠", "EDTA", "INS 386"],
+    "category": "抗氧化剂",
+    "function": "螯合剂，结合金属离子防止氧化变色和沉淀。",
+    "hazards": "限量内安全，会随尿液排出；超大剂量有肾毒性，但食品用量极低。",
+    "commonFoods": ["饮料", "酱料", "罐头"]
+  },
+  {
+    "id": "caramel-color",
+    "name": "焦糖色",
+    "aliases": ["Caramel Color", "INS 150"],
+    "category": "着色剂",
+    "function": "世界上最常用的色素，赋予酱油、可乐等棕褐色。",
+    "hazards": "一般安全。部分工艺（氨法焦糖色）可能产生微量4-甲基咪唑，美国加州曾因此要求警示，正常摄入量下风险极低。",
+    "commonFoods": ["酱油", "可乐", "醋", "卤味"]
+  },
+  {
+    "id": "tartrazine",
+    "name": "柠檬黄",
+    "aliases": ["酒石黄", "Tartrazine", "INS 102"],
+    "category": "着色剂",
+    "function": "合成偶氮色素，赋予亮黄色。",
+    "hazards": "限量内使用合规。少数人（尤其对阿司匹林过敏者）可能出现过敏反应；部分研究提示可能与儿童多动有关，欧盟要求相关食品加注警示。",
+    "commonFoods": ["饮料", "糖果", "膨化食品"]
+  },
+  {
+    "id": "sunset-yellow",
+    "name": "日落黄",
+    "aliases": ["Sunset Yellow", "INS 110"],
+    "category": "着色剂",
+    "function": "合成偶氮色素，赋予橙黄色。",
+    "hazards": "限量内合规。与柠檬黄类似，个别敏感人群可能过敏，欧盟对含该色素食品有警示标识要求。",
+    "commonFoods": ["橙味饮料", "果冻", "糖果"]
+  },
+  {
+    "id": "allura-red",
+    "name": "诱惑红",
+    "aliases": ["Allura Red", "INS 129"],
+    "category": "着色剂",
+    "function": "合成偶氮色素，赋予红色。",
+    "hazards": "限量内合规。有研究提示与儿童行为问题相关，欧盟要求加注警示；限量内一般人群可正常食用。",
+    "commonFoods": ["糖果", "饮料", "糕点"]
+  },
+  {
+    "id": "ponceau-4r",
+    "name": "胭脂红",
+    "aliases": ["丽春红4R", "Ponceau 4R", "INS 124"],
+    "category": "着色剂",
+    "function": "合成偶氮色素，赋予鲜红色。",
+    "hazards": "限量内合规。敏感人群可能过敏，美国禁用该色素，中国、欧盟限量内允许。",
+    "commonFoods": ["饮料", "蜜饯", "糖果"]
+  },
+  {
+    "id": "carmine",
+    "name": "胭脂虫红",
+    "aliases": ["洋红", "Carmine", "Cochineal", "INS 120"],
+    "category": "着色剂",
+    "function": "从胭脂虫中提取的天然红色素，色泽鲜艳稳定。",
+    "hazards": "天然来源，但极少数人对其蛋白质过敏。素食者需注意其动物来源。",
+    "commonFoods": ["酸奶", "饮料", "糖果"]
+  },
+  {
+    "id": "beta-carotene",
+    "name": "β-胡萝卜素",
+    "aliases": ["Beta-Carotene", "INS 160a"],
+    "category": "着色剂",
+    "function": "天然色素兼营养强化剂（维生素A原），赋予橙黄色。",
+    "hazards": "安全性高。长期超大剂量补充剂与吸烟者肺癌风险相关属补充剂范畴，食品添加量无此担忧。",
+    "commonFoods": ["饮料", "黄油", "人造奶油"]
+  },
+  {
+    "id": "paprika-red",
+    "name": "辣椒红",
+    "aliases": ["辣椒红素", "Paprika Extract", "INS 160c"],
+    "category": "着色剂",
+    "function": "从辣椒中提取的天然红色素，广泛用于肉制品和调味品着色。",
+    "hazards": "天然来源，安全性高，无已知风险。",
+    "commonFoods": ["肉制品", "辣条", "调味品"]
+  },
+  {
+    "id": "lycopene",
+    "name": "番茄红素",
+    "aliases": ["Lycopene", "INS 160d"],
+    "category": "着色剂",
+    "function": "从番茄中提取的天然红色素，兼具抗氧化作用。",
+    "hazards": "天然来源，安全性高。",
+    "commonFoods": ["饮料", "汤料", "糖果"]
+  },
+  {
+    "id": "brilliant-blue",
+    "name": "亮蓝",
+    "aliases": ["Brilliant Blue", "INS 133"],
+    "category": "着色剂",
+    "function": "合成色素，赋予蓝色，常与黄色素复配成绿色。",
+    "hazards": "限量内合规，极少数人可能过敏。",
+    "commonFoods": ["饮料", "糖果", "冰淇淋"]
+  },
+  {
+    "id": "indigotine",
+    "name": "靛蓝",
+    "aliases": ["靛胭脂", "Indigotine", "INS 132"],
+    "category": "着色剂",
+    "function": "合成蓝色色素，常用于复配绿色或紫色。",
+    "hazards": "限量内合规，安全性良好。",
+    "commonFoods": ["糖果", "饮料", "烘焙装饰"]
+  },
+  {
+    "id": "erythrosine",
+    "name": "赤藓红",
+    "aliases": ["樱桃红", "Erythrosine", "INS 127"],
+    "category": "着色剂",
+    "function": "合成红色色素，耐光性好。",
+    "hazards": "限量内合规。大剂量动物实验显示甲状腺影响，部分国家限制较严，中国限量内允许使用。",
+    "commonFoods": ["糖果", "樱桃制品", "糕点"]
+  },
+  {
+    "id": "riboflavin-color",
+    "name": "核黄素",
+    "aliases": ["维生素B2", "Riboflavin", "INS 101"],
+    "category": "着色剂",
+    "function": "即维生素B2，天然黄色素兼营养强化剂。",
+    "hazards": "水溶性维生素，安全性高，多余随尿液排出（可能使尿色变黄，属正常现象）。",
+    "commonFoods": ["饮料", "糖果", "营养强化食品"]
+  },
+  {
+    "id": "chlorophyllin-copper",
+    "name": "叶绿素铜钠盐",
+    "aliases": ["Chlorophyllin Copper Complex", "INS 141"],
+    "category": "着色剂",
+    "function": "叶绿素衍生物，赋予绿色，稳定性优于天然叶绿素。",
+    "hazards": "限量内安全，应用历史悠久。",
+    "commonFoods": ["糖果", "冰淇淋", "饮料"]
+  },
+  {
+    "id": "red-koji",
+    "name": "红曲红",
+    "aliases": ["红曲米", "Red Koji", "Monascus"],
+    "category": "着色剂",
+    "function": "红曲霉发酵产生的天然红色素，用于腐乳、肉制品着色。",
+    "hazards": "一般安全；但红曲发酵可能产生桔霉素（肾毒性真菌毒素），应选择正规厂家产品。含天然他汀类物质的红曲补充剂需注意药物相互作用。",
+    "commonFoods": ["腐乳", "红曲酒", "肉制品"]
+  },
+  {
+    "id": "annatto",
+    "name": "胭脂树橙",
+    "aliases": ["红木素", "Annatto", "INS 160b"],
+    "category": "着色剂",
+    "function": "从胭脂树种子提取的天然橙黄色素。",
+    "hazards": "天然来源，极少数人可能过敏，限量内安全。",
+    "commonFoods": ["奶酪", "黄油", "冰淇淋"]
+  },
+  {
+    "id": "titanium-dioxide",
+    "name": "二氧化钛",
+    "aliases": ["钛白粉", "Titanium Dioxide", "INS 171"],
+    "category": "着色剂",
+    "function": "白色素，增白增亮，用于糖果和口香糖包衣。",
+    "hazards": "欧盟自2022年起禁止用于食品（因不能排除纳米颗粒遗传毒性）；中国目前仍限量允许。敏感消费者可主动回避。",
+    "commonFoods": ["口香糖", "糖果包衣", "巧克力制品"]
+  },
+  {
+    "id": "pectin",
+    "name": "果胶",
+    "aliases": ["Pectin", "INS 440"],
+    "category": "增稠剂",
+    "function": "从水果中提取的天然多糖，增稠凝胶，是果酱凝固的关键。",
+    "hazards": "天然膳食纤维，安全性极高，还有助于肠道健康。",
+    "commonFoods": ["果酱", "酸奶", "果汁饮料"]
+  },
+  {
+    "id": "carrageenan",
+    "name": "卡拉胶",
+    "aliases": ["Carrageenan", "INS 407"],
+    "category": "增稠剂",
+    "function": "从红海藻中提取的多糖，增稠稳定，广泛用于乳制品。",
+    "hazards": "食品级卡拉胶被各国监管机构认定为安全；降解卡拉胶（分子量过低）有炎症争议但不在食品中使用。部分研究提示肠道敏感人群可留意。",
+    "commonFoods": ["调制乳", "冰淇淋", "果冻", "火腿肠"]
+  },
+  {
+    "id": "xanthan-gum",
+    "name": "黄原胶",
+    "aliases": ["Xanthan Gum", "INS 415"],
+    "category": "增稠剂",
+    "function": "微生物发酵产生的多糖，高效增稠稳定，少量即可显著增稠。",
+    "hazards": "安全性高，大量摄入可能轻度胀气。",
+    "commonFoods": ["沙拉酱", "饮料", "无麸质烘焙"]
+  },
+  {
+    "id": "guar-gum",
+    "name": "瓜尔胶",
+    "aliases": ["Guar Gum", "INS 412"],
+    "category": "增稠剂",
+    "function": "从瓜尔豆提取的天然多糖，增稠性好，常用于冰淇淋防冰晶。",
+    "hazards": "天然膳食纤维，安全；大量摄入可能引起胀气。",
+    "commonFoods": ["冰淇淋", "酱料", "烘焙食品"]
+  },
+  {
+    "id": "locust-bean-gum",
+    "name": "刺槐豆胶",
+    "aliases": ["槐豆胶", "Locust Bean Gum", "INS 410"],
+    "category": "增稠剂",
+    "function": "从刺槐豆提取的天然多糖，常与卡拉胶协同改善凝胶质地。",
+    "hazards": "天然来源，安全性高。",
+    "commonFoods": ["冰淇淋", "奶酪", "果冻"]
+  },
+  {
+    "id": "cmc",
+    "name": "羧甲基纤维素钠",
+    "aliases": ["纤维素胶", "CMC", "INS 466"],
+    "category": "增稠剂",
+    "function": "改性纤维素，增稠、悬浮、稳定，用途极广。",
+    "hazards": "一般安全。有研究提示可能影响肠道菌群和黏液层，但证据来自动物实验，正常摄入量无需担心。",
+    "commonFoods": ["饮料", "冰淇淋", "速食面"]
+  },
+  {
+    "id": "modified-starch",
+    "name": "变性淀粉",
+    "aliases": ["Modified Starch", "羟丙基淀粉", "乙酰化淀粉"],
+    "category": "增稠剂",
+    "function": "物理或化学改性的淀粉，改善增稠、耐煮、抗老化性能。",
+    "hazards": "安全性高，消化特性与普通淀粉类似。",
+    "commonFoods": ["酱料", "酸奶", "速冻食品"]
+  },
+  {
+    "id": "gelatin",
+    "name": "明胶",
+    "aliases": ["Gelatin"],
+    "category": "增稠剂",
+    "function": "动物皮骨水解的蛋白质，形成弹性凝胶，是软糖和酸奶冻的主要凝胶剂。",
+    "hazards": "食用安全；来源为动物，素食者和特定宗教饮食者需留意。",
+    "commonFoods": ["软糖", "酸奶", "果冻", "胶囊"]
+  },
+  {
+    "id": "agar",
+    "name": "琼脂",
+    "aliases": ["琼脂糖", "Agar", "INS 406"],
+    "category": "增稠剂",
+    "function": "从海藻提取的多糖，凝胶强度高于明胶，植物来源。",
+    "hazards": "天然安全，也是膳食纤维来源。",
+    "commonFoods": ["果冻", "凉粉", "烘焙馅料"]
+  },
+  {
+    "id": "konjac-glucomannan",
+    "name": "魔芋粉",
+    "aliases": ["葡甘聚糖", "Konjac Glucomannan", "INS 425"],
+    "category": "增稠剂",
+    "function": "从魔芋提取的可溶性膳食纤维，增稠凝胶，热量极低。",
+    "hazards": "安全性高，作为膳食纤维有助饱腹感；大量摄入可能腹胀。",
+    "commonFoods": ["魔芋丝", "果冻", "代餐"]
+  },
+  {
+    "id": "gellan-gum",
+    "name": "结冷胶",
+    "aliases": ["Gellan Gum", "INS 418"],
+    "category": "增稠剂",
+    "function": "微生物发酵多糖，形成清爽凝胶，常用于悬浮饮料。",
+    "hazards": "限量内安全，无已知显著风险。",
+    "commonFoods": ["悬浮果粒饮料", "植物奶"]
+  },
+  {
+    "id": "sodium-alginate",
+    "name": "海藻酸钠",
+    "aliases": ["藻朊酸钠", "Sodium Alginate", "INS 401"],
+    "category": "增稠剂",
+    "function": "从褐藻提取的多糖，增稠成膜，与钙离子形成凝胶。",
+    "hazards": "天然来源，安全性高。",
+    "commonFoods": ["冰淇淋", "仿生食品", "饮料"]
+  },
+  {
+    "id": "sucrose-ester",
+    "name": "蔗糖脂肪酸酯",
+    "aliases": ["蔗糖酯", "Sucrose Esters", "INS 473"],
+    "category": "乳化剂",
+    "function": "亲水性乳化剂，改善面团和乳制品质地。",
+    "hazards": "限量内安全，在体内水解为蔗糖和脂肪酸。",
+    "commonFoods": ["面包", "乳制品", "糖果"]
+  },
+  {
+    "id": "mono-diglycerides",
+    "name": "单，双甘油脂肪酸酯",
+    "aliases": ["单甘酯", "Mono- and Diglycerides", "INS 471"],
+    "category": "乳化剂",
+    "function": "最常用的乳化剂之一，使油水混合、改善口感和保质期。",
+    "hazards": "限量内安全，消化方式与膳食脂肪相同。部分素食者因其可能来自动物脂肪而留意。",
+    "commonFoods": ["面包", "冰淇淋", "人造奶油"]
+  },
+  {
+    "id": "soy-lecithin",
+    "name": "大豆磷脂",
+    "aliases": ["卵磷脂", "Soy Lecithin", "INS 322"],
+    "category": "乳化剂",
+    "function": "天然乳化剂，使巧克力顺滑、防止油水分离。",
+    "hazards": "天然成分，安全性高；大豆过敏者需留意（不过精炼磷脂中致敏蛋白极少）。",
+    "commonFoods": ["巧克力", "烘焙食品", "奶粉"]
+  },
+  {
+    "id": "polysorbate-80",
+    "name": "聚山梨醇酯80",
+    "aliases": ["吐温80", "Polysorbate 80", "INS 433"],
+    "category": "乳化剂",
+    "function": "强效乳化剂，改善冰淇淋抗融性和饮料稳定性。",
+    "hazards": "限量内安全。动物实验提示可能影响肠道菌群，正常食品用量下无需担心。",
+    "commonFoods": ["冰淇淋", "饮料", "烘焙"]
+  },
+  {
+    "id": "polysorbate-60",
+    "name": "聚山梨醇酯60",
+    "aliases": ["吐温60", "Polysorbate 60", "INS 435"],
+    "category": "乳化剂",
+    "function": "乳化稳定剂，常与司盘类复配使用。",
+    "hazards": "限量内安全，与吐温80类似。",
+    "commonFoods": ["冰淇淋", "奶油", "烘焙"]
+  },
+  {
+    "id": "sorbitan-monostearate",
+    "name": "山梨醇酐单硬脂酸酯",
+    "aliases": ["司盘60", "Sorbitan Monostearate", "INS 491"],
+    "category": "乳化剂",
+    "function": "油包水型乳化剂，改善油脂结晶和质地。",
+    "hazards": "限量内安全。",
+    "commonFoods": ["人造奶油", "巧克力", "烘焙"]
+  },
+  {
+    "id": "ssl",
+    "name": "硬脂酰乳酸钠",
+    "aliases": ["SSL", "Sodium Stearoyl Lactylate", "INS 481"],
+    "category": "乳化剂",
+    "function": "面团改良剂，增强面筋、增大面包体积。",
+    "hazards": "限量内安全，在体内水解为常见脂肪酸和乳酸。",
+    "commonFoods": ["面包", "面条", "糕点"]
+  },
+  {
+    "id": "dateem",
+    "name": "双乙酰酒石酸单双甘油酯",
+    "aliases": ["DATEM", "INS 472e"],
+    "category": "乳化剂",
+    "function": "面团强化剂，改善面团弹性和成品体积。",
+    "hazards": "限量内安全。",
+    "commonFoods": ["面包", "馒头", "饼干"]
+  },
+  {
+    "id": "pg-ester",
+    "name": "丙二醇脂肪酸酯",
+    "aliases": ["PG酯", "Propylene Glycol Esters", "INS 477"],
+    "category": "乳化剂",
+    "function": "乳化稳定剂，用于糕点和奶油起泡稳定。",
+    "hazards": "限量内安全；丙二醇在限量内可正常代谢。",
+    "commonFoods": ["糕点", "奶油", "冰淇淋"]
+  },
+  {
+    "id": "ammonium-phosphatide",
+    "name": "磷脂酸铵",
+    "aliases": ["铵磷脂", "Ammonium Phosphatide", "INS 442"],
+    "category": "乳化剂",
+    "function": "巧克力专用乳化剂，降低粘度、替代部分可可脂。",
+    "hazards": "限量内安全。",
+    "commonFoods": ["巧克力", "可可制品"]
+  },
+  {
+    "id": "citric-acid",
+    "name": "柠檬酸",
+    "aliases": ["Citric Acid", "INS 330"],
+    "category": "酸度调节剂",
+    "function": "最常用的酸味剂，调节酸度、防腐助色，工业上由黑曲霉发酵生产。",
+    "hazards": "天然存在于柑橘类水果，安全性极高；高浓度直接接触可能刺激口腔和牙齿。",
+    "commonFoods": ["饮料", "糖果", "罐头", "调味品"]
+  },
+  {
+    "id": "sodium-citrate",
+    "name": "柠檬酸钠",
+    "aliases": ["Sodium Citrate", "INS 331"],
+    "category": "酸度调节剂",
+    "function": "缓冲剂、酸度调节和乳化稳定，改善口感柔和度。",
+    "hazards": "安全性高，也是临床常用药物成分；高钠饮食者留意总量。",
+    "commonFoods": ["饮料", "奶酪", "乳饮料"]
+  },
+  {
+    "id": "malic-acid",
+    "name": "苹果酸",
+    "aliases": ["Malic Acid", "INS 296"],
+    "category": "酸度调节剂",
+    "function": "酸味剂，酸味比柠檬酸柔和持久，常用于果味食品。",
+    "hazards": "天然存在于苹果等水果，安全性高。",
+    "commonFoods": ["饮料", "糖果", "果冻"]
+  },
+  {
+    "id": "lactic-acid",
+    "name": "乳酸",
+    "aliases": ["Lactic Acid", "INS 270"],
+    "category": "酸度调节剂",
+    "function": "酸味剂和pH调节剂，天然存在于发酵食品。",
+    "hazards": "人体代谢天然产物，安全性高。",
+    "commonFoods": ["酸奶", "泡菜", "肉制品"]
+  },
+  {
+    "id": "fumaric-acid",
+    "name": "富马酸",
+    "aliases": ["延胡索酸", "Fumaric Acid", "INS 297"],
+    "category": "酸度调节剂",
+    "function": "酸味剂，酸味强且价格低，常用于固体饮料。",
+    "hazards": "人体三羧酸循环中间产物，安全性高。",
+    "commonFoods": ["固体饮料", "果酱", "烘焙"]
+  },
+  {
+    "id": "tartaric-acid",
+    "name": "酒石酸",
+    "aliases": ["Tartaric Acid", "INS 334"],
+    "category": "酸度调节剂",
+    "function": "酸味剂，天然存在于葡萄，用于饮料和烘焙。",
+    "hazards": "限量内安全，大量摄入可能刺激肠胃。",
+    "commonFoods": ["饮料", "烘焙粉", "糖果"]
+  },
+  {
+    "id": "phosphoric-acid",
+    "name": "磷酸",
+    "aliases": ["Phosphoric Acid", "INS 338"],
+    "category": "酸度调节剂",
+    "function": "酸味剂，赋予可乐独特的尖锐酸味。",
+    "hazards": "限量内合规。长期大量摄入磷酸可能干扰钙磷平衡，与骨密度下降相关，建议控制可乐类饮料的饮用量。",
+    "commonFoods": ["可乐", "肉类加工"]
+  },
+  {
+    "id": "sodium-carbonate",
+    "name": "碳酸钠",
+    "aliases": ["纯碱", "苏打", "Sodium Carbonate", "INS 500i"],
+    "category": "酸度调节剂",
+    "function": "碱性剂，中和酸度、改善面食筋道口感。",
+    "hazards": "安全性高；破坏部分B族维生素，高钠食品留意总摄入。",
+    "commonFoods": ["面条", "馒头", "碱水粽"]
+  },
+  {
+    "id": "sodium-bicarbonate",
+    "name": "碳酸氢钠",
+    "aliases": ["小苏打", "Sodium Bicarbonate", "INS 500ii"],
+    "category": "膨松剂",
+    "function": "膨松剂，受热产生二氧化碳使面团膨松；也用于中和酸度。",
+    "hazards": "安全性高；用量过多会残留碱味并破坏维生素。",
+    "commonFoods": ["饼干", "苏打水", "烘焙"]
+  },
+  {
+    "id": "ammonium-bicarbonate",
+    "name": "碳酸氢铵",
+    "aliases": ["臭粉", "Ammonium Bicarbonate", "INS 503ii"],
+    "category": "膨松剂",
+    "function": "膨松剂，产气能力强，适合含水量低的产品。",
+    "hazards": "限量内安全，加热后氨气挥发；残留过多会有刺鼻氨味。",
+    "commonFoods": ["桃酥", "饼干", "油条"]
+  },
+  {
+    "id": "calcium-phosphate",
+    "name": "磷酸氢钙",
+    "aliases": ["Calcium Phosphate", "磷酸三钙", "INS 341"],
+    "category": "膨松剂",
+    "function": "膨松助剂和抗结剂，也是钙强化来源。",
+    "hazards": "限量内安全；过量磷酸盐摄入需注意与钙平衡。",
+    "commonFoods": ["烘焙粉", "奶粉", "调味粉"]
+  },
+  {
+    "id": "cream-of-tartar",
+    "name": "酒石酸氢钾",
+    "aliases": ["塔塔粉", "Cream of Tartar", "INS 336"],
+    "category": "膨松剂",
+    "function": "酸性膨松助剂，稳定蛋白打发，与小苏打配合产气。",
+    "hazards": "限量内安全。",
+    "commonFoods": ["烘焙", "蛋白霜"]
+  },
+  {
+    "id": "sodium-aluminium-phosphate",
+    "name": "磷酸铝钠",
+    "aliases": ["含铝膨松剂", "Sodium Aluminium Phosphate", "INS 541"],
+    "category": "膨松剂",
+    "function": "酸性膨松剂，用于烘焙粉中控制产气速度。",
+    "hazards": "铝摄入过多与神经健康风险相关，中国2014年起已禁止含铝膨松剂用于馒头等发酵面制品，油炸面制品等仍限量允许，建议关注总铝摄入。",
+    "commonFoods": ["油条", "烘焙粉", "油炸面制品"]
+  },
+  {
+    "id": "sodium-acid-pyrophosphate",
+    "name": "焦磷酸二氢二钠",
+    "aliases": ["酸式焦磷酸钠", "SAPP", "INS 450i"],
+    "category": "膨松剂",
+    "function": "酸性膨松剂，控制烘焙粉中产气节奏。",
+    "hazards": "限量内安全；属磷酸盐类，长期过量摄入磷酸盐需留意。",
+    "commonFoods": ["烘焙粉", "预拌粉"]
+  },
+  {
+    "id": "edible-flavor",
+    "name": "食用香精",
+    "aliases": ["食用香料", "Flavoring", "香精"],
+    "category": "香精香料",
+    "function": "赋予或增强食品香气，成分通常为多种香料的复配混合物。",
+    "hazards": "按标准使用安全，具体成分通常不公开（商业机密）；对香气敏感或有特定过敏史的人群可能不适。",
+    "commonFoods": ["饮料", "乳饮料", "零食", "烘焙"]
+  },
+  {
+    "id": "vanillin",
+    "name": "香草醛",
+    "aliases": ["香兰素", "Vanillin"],
+    "category": "香精香料",
+    "function": "香草风味的主要成分，广泛用于甜食增香。",
+    "hazards": "安全性高；婴幼儿配方食品中不得添加（中国规定）。",
+    "commonFoods": ["冰淇淋", "饼干", "巧克力"]
+  },
+  {
+    "id": "ethyl-maltol",
+    "name": "乙基麦芽酚",
+    "aliases": ["Ethyl Maltol"],
+    "category": "香精香料",
+    "function": "增香剂，增强甜味和果香，去除异味。",
+    "hazards": "限量内安全。",
+    "commonFoods": ["饮料", "糖果", "肉制品"]
+  },
+  {
+    "id": "sodium-tripolyphosphate",
+    "name": "三聚磷酸钠",
+    "aliases": ["STPP", "INS 451i"],
+    "category": "水分保持剂",
+    "function": "保水、改善肉制品弹性和嫩度，也用于螯合金属离子。",
+    "hazards": "限量内安全。过量摄入磷酸盐可能影响钙吸收，加工肉制品常叠加多种磷酸盐，建议控制总量。",
+    "commonFoods": ["火腿肠", "肉丸", "水产制品"]
+  },
+  {
+    "id": "sodium-pyrophosphate",
+    "name": "焦磷酸钠",
+    "aliases": ["Sodium Pyrophosphate", "INS 450"],
+    "category": "水分保持剂",
+    "function": "保水剂和螯合剂，改善肉制品质地。",
+    "hazards": "同磷酸盐类，限量内安全，注意叠加摄入。",
+    "commonFoods": ["肉制品", "水产", "奶制品"]
+  },
+  {
+    "id": "sodium-hexametaphosphate",
+    "name": "六偏磷酸钠",
+    "aliases": ["Sodium Hexametaphosphate", "INS 452i"],
+    "category": "水分保持剂",
+    "function": "保水、螯合、分散作用，广泛用于肉制品和饮料。",
+    "hazards": "限量内安全，属磷酸盐类，注意总摄入。",
+    "commonFoods": ["肉制品", "饮料", "乳制品"]
+  },
+  {
+    "id": "potassium-chloride",
+    "name": "氯化钾",
+    "aliases": ["Potassium Chloride", "INS 508"],
+    "category": "水分保持剂",
+    "function": "低钠盐的代盐成分，提供咸味以减少钠摄入；也用作凝胶剂。",
+    "hazards": "一般人群安全，是减钠的好选择；肾功能不全或服用特定药物（如保钾利尿剂）者高钾有风险，应咨询医生。",
+    "commonFoods": ["低钠盐", "运动饮料", "果冻"]
+  },
+  {
+    "id": "glycerol",
+    "name": "甘油",
+    "aliases": ["丙三醇", "Glycerol", "INS 422"],
+    "category": "水分保持剂",
+    "function": "保湿剂和甜味剂，保持食品柔软湿润。",
+    "hazards": "安全性高，也是人体代谢物质。",
+    "commonFoods": ["糕点", "糖果", "肉脯"]
+  },
+  {
+    "id": "sodium-lactate",
+    "name": "乳酸钠",
+    "aliases": ["Sodium Lactate", "INS 325"],
+    "category": "水分保持剂",
+    "function": "保湿、防腐增效，改善肉制品质地。",
+    "hazards": "限量内安全，是乳酸的钠盐。",
+    "commonFoods": ["肉制品", "烘焙", "酱料"]
+  },
+  {
+    "id": "calcium-sulfate",
+    "name": "硫酸钙",
+    "aliases": ["石膏", "Calcium Sulfate", "INS 516"],
+    "category": "稳定剂凝固剂",
+    "function": "豆腐凝固剂（南豆腐用石膏），也作钙强化剂。",
+    "hazards": "食用级石膏安全性高，还额外提供钙质。",
+    "commonFoods": ["豆腐", "面粉制品"]
+  },
+  {
+    "id": "magnesium-chloride",
+    "name": "氯化镁",
+    "aliases": ["卤水", "Magnesium Chloride", "INS 511"],
+    "category": "稳定剂凝固剂",
+    "function": "豆腐凝固剂（北豆腐用卤水），赋予豆腐扎实口感。",
+    "hazards": "限量内安全，是传统工艺成分。",
+    "commonFoods": ["北豆腐", "豆干"]
+  },
+  {
+    "id": "calcium-chloride",
+    "name": "氯化钙",
+    "aliases": ["Calcium Chloride", "INS 509"],
+    "category": "稳定剂凝固剂",
+    "function": "凝固剂、硬化剂，保持果蔬罐头脆度，也用于豆腐和奶酪。",
+    "hazards": "限量内安全，同时补充钙。",
+    "commonFoods": ["罐头", "豆腐", "奶酪"]
+  },
+  {
+    "id": "glucono-delta-lactone",
+    "name": "葡萄糖酸-δ-内酯",
+    "aliases": ["内酯", "GDL", "INS 575"],
+    "category": "稳定剂凝固剂",
+    "function": "内酯豆腐的凝固剂，缓慢水解产酸使豆浆凝固，口感细嫩。",
+    "hazards": "安全性高，水解产物为葡萄糖酸。",
+    "commonFoods": ["内酯豆腐", "奶酪", "烘焙"]
+  },
+  {
+    "id": "monosodium-glutamate",
+    "name": "谷氨酸钠",
+    "aliases": ["味精", "MSG", "INS 621"],
+    "category": "增味剂",
+    "function": "鲜味剂，味精的主要成分，增强食物鲜味。",
+    "hazards": "被大量研究证实对一般人群安全，'中餐馆综合征'未获科学证实。含钠约为食盐的1/3，使用时可相应减少盐量；少数人可能有短暂敏感反应。",
+    "commonFoods": ["几乎所有咸味加工食品", "调味料", "零食"]
+  },
+  {
+    "id": "disodium-guanylate",
+    "name": "呈味核苷酸二钠",
+    "aliases": ["鸟苷酸二钠", "GMP", "IMP", "INS 627", "I+G"],
+    "category": "增味剂",
+    "function": "强力增鲜剂，与味精有数倍协同增鲜效果，是鸡精的主要成分之一。",
+    "hazards": "一般人群安全；痛风或高尿酸人群应留意，核苷酸代谢会产生嘌呤。",
+    "commonFoods": ["鸡精", "调味料", "方便面调料包"]
+  },
+  {
+    "id": "disodium-succinate",
+    "name": "琥珀酸二钠",
+    "aliases": ["干贝素", "Disodium Succinate", "INS 364"],
+    "category": "增味剂",
+    "function": "贝类鲜味特征成分，增强海鲜风味。",
+    "hazards": "限量内安全。",
+    "commonFoods": ["调味料", "海鲜制品"]
+  },
+  {
+    "id": "yeast-extract",
+    "name": "酵母抽提物",
+    "aliases": ["酵母提取物", "Yeast Extract"],
+    "category": "增味剂",
+    "function": "天然增鲜配料，富含氨基酸和核苷酸，兼具'清洁标签'属性。",
+    "hazards": "天然食品配料，安全性高；含天然谷氨酸（作用类似味精）。",
+    "commonFoods": ["酱油", "调味料", "零食"]
+  },
+  {
+    "id": "hydrolyzed-vegetable-protein",
+    "name": "水解植物蛋白",
+    "aliases": ["HVP", "Hydrolyzed Vegetable Protein"],
+    "category": "增味剂",
+    "function": "大豆等蛋白水解产物，提供鲜味和肉感风味。",
+    "hazards": "一般安全；酸水解工艺可能产生微量氯丙醇，正规工艺已严格控制。大豆过敏者留意。",
+    "commonFoods": ["调味料", "酱料", "肉制品"]
+  },
+  {
+    "id": "calcium-carbonate",
+    "name": "碳酸钙",
+    "aliases": ["Calcium Carbonate", "INS 170i"],
+    "category": "营养强化剂",
+    "function": "钙强化剂，也作抗结剂和酸度调节。",
+    "hazards": "限量内安全，是常见补钙成分；过量补充可能引起便秘或结石风险。",
+    "commonFoods": ["面粉", "奶粉", "饮料"]
+  },
+  {
+    "id": "ferrous-lactate",
+    "name": "乳酸亚铁",
+    "aliases": ["Ferrous Lactate"],
+    "category": "营养强化剂",
+    "function": "铁强化剂，预防缺铁性贫血。",
+    "hazards": "限量内安全；铁强化对缺铁人群有益，血色病等铁过载人群应避免。",
+    "commonFoods": ["强化面粉", "米粉", "酱油"]
+  },
+  {
+    "id": "zinc-gluconate",
+    "name": "葡萄糖酸锌",
+    "aliases": ["Zinc Gluconate"],
+    "category": "营养强化剂",
+    "function": "锌强化剂，支持免疫和生长发育。",
+    "hazards": "限量内安全，长期超量补锌可能干扰铜吸收。",
+    "commonFoods": ["婴幼儿食品", "强化谷物"]
+  },
+  {
+    "id": "vitamin-a",
+    "name": "维生素A",
+    "aliases": ["视黄醇", "Vitamin A", "INS 300系列"],
+    "category": "营养强化剂",
+    "function": "营养强化，支持视力和免疫。",
+    "hazards": "限量内安全；脂溶性维生素可蓄积，孕妇避免超量补充。",
+    "commonFoods": ["强化奶粉", "食用油", "婴幼儿食品"]
+  },
+  {
+    "id": "vitamin-d",
+    "name": "维生素D",
+    "aliases": ["胆钙化醇", "Vitamin D3", "INS 310系列"],
+    "category": "营养强化剂",
+    "function": "促进钙吸收，强化乳制品和谷物。",
+    "hazards": "限量内安全，现代饮食普遍摄入不足，强化有益；超大剂量补充剂才有中毒风险。",
+    "commonFoods": ["牛奶", "奶粉", "谷物"]
+  },
+  {
+    "id": "dha-algal-oil",
+    "name": "DHA藻油",
+    "aliases": ["藻油DHA", "Algal DHA"],
+    "category": "营养强化剂",
+    "function": "从微藻中提取的DHA，支持大脑和视力发育。",
+    "hazards": "安全性高，植物来源无海洋污染风险。",
+    "commonFoods": ["婴幼儿配方奶粉", "调制乳"]
+  },
+  {
+    "id": "folic-acid",
+    "name": "叶酸",
+    "aliases": ["维生素B9", "Folic Acid"],
+    "category": "营养强化剂",
+    "function": "B族维生素强化，预防胎儿神经管缺陷。",
+    "hazards": "限量内安全，对育龄女性尤其重要。",
+    "commonFoods": ["强化面粉", "孕妇食品"]
+  },
+  {
+    "id": "vitamin-b1",
+    "name": "维生素B1",
+    "aliases": ["硫胺素", "Thiamine"],
+    "category": "营养强化剂",
+    "function": "B族维生素强化，参与能量代谢。",
+    "hazards": "水溶性，限量内安全。",
+    "commonFoods": ["强化谷物", "饮料"]
+  },
+  {
+    "id": "vitamin-b2",
+    "name": "维生素B2",
+    "aliases": ["核黄素", "Riboflavin"],
+    "category": "营养强化剂",
+    "function": "B族维生素强化，兼作天然黄色素。",
+    "hazards": "水溶性，安全性高。",
+    "commonFoods": ["乳制品", "强化谷物"]
+  }
+]

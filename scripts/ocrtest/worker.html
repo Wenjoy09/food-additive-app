@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8" /><title>OCR Worker Test</title></head>
+  <body>
+    <script>
+      const log = (m) => {
+        console.log('[t]', m);
+        document.body.innerText += m + '\n';
+      };
+      log('spawning worker...');
+      const worker = new Worker('/tesseract/worker.min.js');
+      worker.onerror = (e) => log('WORKER ERROR: ' + e.message + ' @' + e.filename + ':' + e.lineno);
+      worker.onmessage = (e) => log('MSG: ' + JSON.stringify(e.data).slice(0, 200));
+      worker.postMessage({
+        workerId: 'test0',
+        jobId: 'Job-1',
+        action: 'load',
+        payload: {
+          options: {
+            corePath: '/tesseract',
+            langPath: '/tesseract/langdata',
+            workerPath: '/tesseract/worker.min.js',
+            gzip: false,
+            lstmOnly: true,
+            cacheMethod: 'none',
+            workerBlobURL: false,
+          },
+        },
+      });
+      log('posted load');
+    </script>
+  </body>
+</html>
