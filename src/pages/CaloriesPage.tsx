@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AlertTriangle, Flame, Loader2, Pencil, ScanText, Sparkles } from 'lucide-react';
 import { ApiAuthError } from '@/lib/claudeApi';
 import { analyzeCaloriesWithProvider } from '@/lib/visionProviders';
-import { recognizeText, textToCalorieResult } from '@/lib/offlineOcr';
+import { recognizeManyTexts, textToCalorieResult } from '@/lib/offlineOcr';
 import { preprocessForOcr } from '@/lib/imagePreprocess';
 import { caloriesToRiceBowls, toKcal, totalCalories } from '@/lib/nutritionEvaluator';
 import { SAMPLE_CALORIE_RESULT } from '@/data/sampleResults';
@@ -14,7 +14,7 @@ type Phase = 'idle' | 'loading' | 'ready' | 'error';
 
 export default function CaloriesPage() {
   const { current, toApiSettings } = useSettings();
-  const [image, setImage] = useState<SelectedImage | null>(null);
+  const [images, setImages] = useState<SelectedImage[]>([]);
   const [phase, setPhase] = useState<Phase>('idle');
   const [loadingText, setLoadingText] = useState('');
   const [error, setError] = useState('');
@@ -36,7 +36,7 @@ export default function CaloriesPage() {
   const hasKey = current.apiKey.trim().length > 0;
 
   async function recognize() {
-    if (!image || !hasKey) return;
+    if (!images.length || !hasKey) return;
     setPhase('loading');
     setLoadingText('AI 正在识别营养成分表中的能量行…通常需要 10-30 秒');
     setError('');
@@ -46,8 +46,7 @@ export default function CaloriesPage() {
     try {
       const res = await analyzeCaloriesWithProvider(
         toApiSettings(),
-        image.base64,
-        image.mediaType
+        images.map((i) => ({ base64: i.base64, mediaType: i.mediaType }))
       );
       applyScanResult(res, false);
     } catch (e) {
@@ -57,30 +56,39 @@ export default function CaloriesPage() {
     }
   }
 
-  /** 离线 OCR 备用：浏览器本地识别能量行 */
+  /** 离线 OCR 备用：浏览器本地识别能量行；多张时取第一张识别出能量的 */
   async function recognizeOffline() {
-    if (!image) return;
+    if (!images.length) return;
     setPhase('loading');
-    setLoadingText('离线 OCR 正在识别（首次需加载识别引擎）…');
+    setLoadingText('离线 OCR 预处理图片…');
     setError('');
     setAuthProblem(false);
     setIsSample(false);
     setIsOcr(true);
     try {
-      const canvas = await preprocessForOcr(image.base64, image.mediaType);
-      const text = await recognizeText(canvas, (status, progress) => {
+      const canvases = [];
+      for (const img of images) {
+        canvases.push(await preprocessForOcr(img.base64, img.mediaType));
+      }
+      const total = canvases.length;
+      const texts = await recognizeManyTexts(canvases, (i, status, progress) => {
         if (status.includes('recognizing')) {
-          setLoadingText(`离线 OCR 识别中… ${Math.round(progress * 100)}%`);
+          setLoadingText(
+            `离线 OCR 识别第 ${i + 1}/${total} 张… ${Math.round(progress * 100)}%`
+          );
         } else if (status.includes('loading language')) {
           setLoadingText('正在加载离线识别语言包…');
         }
       });
-      if (!text.trim()) {
-        setError('离线 OCR 未能识别出文字，请换一张更清晰的照片，或手动输入千焦数');
+      const found = texts
+        .map((t) => ({ t, r: textToCalorieResult(t) }))
+        .find(({ r }) => r.energyKj != null || r.energyKcal != null);
+      if (!found || !found.t.trim()) {
+        setError('离线 OCR 未能识别出能量数值，请换更清晰的照片，或手动输入千焦数');
         setPhase('error');
         return;
       }
-      applyScanResult(textToCalorieResult(text), false);
+      applyScanResult(found.r, false);
     } catch (e) {
       setError(e instanceof Error ? e.message : '离线识别失败');
       setPhase('error');
@@ -88,7 +96,7 @@ export default function CaloriesPage() {
   }
 
   function useSample() {
-    setImage(null);
+    setImages([]);
     setError('');
     setManualMode(false);
     setIsOcr(false);
@@ -119,7 +127,7 @@ export default function CaloriesPage() {
     setManualMode(true);
     setScan(null);
     setIsSample(false);
-    setImage(null);
+    setImages([]);
     setPhase('idle');
     setKcalPer100g(null);
     setError('');
@@ -150,7 +158,7 @@ export default function CaloriesPage() {
     setIsSample(false);
     setIsOcr(false);
     setKcalPer100g(null);
-    setImage(null);
+    setImages([]);
     setError('');
     setManualMode(false);
   }
@@ -281,7 +289,7 @@ export default function CaloriesPage() {
         </div>
       ) : (
         <>
-          <ImageUploader selected={image} onSelect={setImage} />
+          <ImageUploader selected={images} onSelect={setImages} max={3} />
 
           {phase === 'error' && error && (
             <div className="alert alert-error" style={{ marginTop: 12 }}>
@@ -299,11 +307,11 @@ export default function CaloriesPage() {
           )}
 
           <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <button className="btn btn-primary" disabled={!image || !hasKey} onClick={recognize}>
+            <button className="btn btn-primary" disabled={!images.length || !hasKey} onClick={recognize}>
               <Sparkles style={{ width: 17, height: 17 }} />
               AI 识别热量
             </button>
-            <button className="btn btn-secondary" disabled={!image} onClick={recognizeOffline}>
+            <button className="btn btn-secondary" disabled={!images.length} onClick={recognizeOffline}>
               <ScanText style={{ width: 17, height: 17 }} />
               离线 OCR 识别（免费备用）
             </button>

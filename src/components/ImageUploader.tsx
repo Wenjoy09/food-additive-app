@@ -12,9 +12,10 @@ export interface SelectedImage {
 }
 
 interface Props {
-  selected: SelectedImage | null;
-  onSelect: (img: SelectedImage | null) => void;
-  disabled?: boolean;
+  selected: SelectedImage[];
+  onSelect: (imgs: SelectedImage[]) => void;
+  /** 最多张数，默认 3（配料表与营养成分表可能不在同一面） */
+  max?: number;
 }
 
 /** 把浏览器 File 读成 base64 + mediaType */
@@ -48,76 +49,72 @@ export function fileToBase64(file: File): Promise<{ base64: string; mediaType: I
   });
 }
 
-export default function ImageUploader({ selected, onSelect, disabled }: Props) {
+export default function ImageUploader({ selected, onSelect, max = 3 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    // 允许重复选择同一文件
+  async function handleFiles(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files ?? []);
     e.target.value = '';
-    if (!file) return;
-
-    if (!file.type.startsWith('image/')) {
-      alert('请选择图片文件');
-      return;
+    const room = max - selected.length;
+    const added: SelectedImage[] = [];
+    for (const file of files.slice(0, room)) {
+      if (!file.type.startsWith('image/')) continue;
+      try {
+        const { base64, mediaType } = await fileToBase64(file);
+        added.push({
+          base64,
+          mediaType,
+          previewUrl: URL.createObjectURL(file),
+          fileName: file.name,
+        });
+      } catch {
+        // 单张读取失败跳过，不阻断其余图片
+      }
     }
-    try {
-      const { base64, mediaType } = await fileToBase64(file);
-      // 释放旧的预览 URL
-      if (selected) URL.revokeObjectURL(selected.previewUrl);
-      onSelect({
-        base64,
-        mediaType,
-        previewUrl: URL.createObjectURL(file),
-        fileName: file.name,
-      });
-    } catch (err) {
-      alert(err instanceof Error ? err.message : '读取图片失败');
-    }
+    if (added.length) onSelect([...selected, ...added]);
   }
 
-  if (selected) {
-    return (
-      <div className="upload-preview">
-        <img src={selected.previewUrl} alt="已选图片" />
-        <button
-          className="remove-btn"
-          aria-label="移除图片"
-          onClick={() => {
-            URL.revokeObjectURL(selected.previewUrl);
-            onSelect(null);
-          }}
-        >
-          <X />
-        </button>
-      </div>
-    );
+  function removeAt(idx: number) {
+    URL.revokeObjectURL(selected[idx].previewUrl);
+    onSelect(selected.filter((_, i) => i !== idx));
   }
 
   return (
-    <>
-      <div
-        className="upload-area"
-        onClick={() => !disabled && inputRef.current?.click()}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') inputRef.current?.click();
-        }}
-      >
-        <Camera />
-        <div>点击上传食品包装照片</div>
-        <div style={{ marginTop: 4, fontSize: 12 }}>
-          请拍清楚「配料表」和「营养成分表」
+    <div className="upload-grid">
+      {selected.map((img, i) => (
+        <div className="upload-tile" key={img.previewUrl}>
+          <img src={img.previewUrl} alt={`图片 ${i + 1}`} />
+          <button className="remove-btn" aria-label="移除" onClick={() => removeAt(i)}>
+            <X />
+          </button>
         </div>
-      </div>
+      ))}
+      {selected.length < max && (
+        <div
+          className="upload-add"
+          style={selected.length === 0 ? { width: '100%', minHeight: 170 } : undefined}
+          role="button"
+          tabIndex={0}
+          onClick={() => inputRef.current?.click()}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') inputRef.current?.click();
+          }}
+        >
+          <Camera />
+          <div>添加照片（{selected.length}/{max}）</div>
+          <div className="upload-hint">
+            配料表和营养成分表不在同一面时，可分别拍照一起上传
+          </div>
+        </div>
+      )}
       <input
         ref={inputRef}
         type="file"
         accept="image/*"
+        multiple
         style={{ display: 'none' }}
-        onChange={handleFile}
+        onChange={handleFiles}
       />
-    </>
+    </div>
   );
 }

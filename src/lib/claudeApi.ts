@@ -74,12 +74,16 @@ const CALORIE_SCHEMA = {
   additionalProperties: false,
 } as const;
 
+export interface VisionImage {
+  base64: string;
+  mediaType: ImageMediaType;
+}
+
 async function callVision<T>(
   settings: ApiSettings,
   system: string,
   prompt: string,
-  base64: string,
-  mediaType: ImageMediaType,
+  images: VisionImage[],
   schema: { [key: string]: unknown }
 ): Promise<T> {
   const client = createClient(settings);
@@ -94,10 +98,10 @@ async function callVision<T>(
         {
           role: 'user',
           content: [
-            {
-              type: 'image',
-              source: { type: 'base64', media_type: mediaType, data: base64 },
-            },
+            ...images.map((img) => ({
+              type: 'image' as const,
+              source: { type: 'base64' as const, media_type: img.mediaType, data: img.base64 },
+            })),
             { type: 'text', text: prompt },
           ],
         },
@@ -133,54 +137,51 @@ async function callVision<T>(
   }
 }
 
-/** 功能 2：识别配料表 + 营养成分表 */
+/** 功能 2：识别配料表 + 营养成分表（支持多张图片） */
 export function analyzeIngredients(
   settings: ApiSettings,
-  base64: string,
-  mediaType: ImageMediaType
+  images: VisionImage[]
 ): Promise<IngredientScanResult> {
   return callVision<IngredientScanResult>(
     settings,
     [
       '你是一位专业的中国预包装食品标签识别助手。',
-      '你会从包装图片中准确读取"配料表"和"营养成分表"，并严格按 JSON Schema 输出。',
+      '用户可能上传同一包装的多张图片（配料表与营养成分表可能不在同一面），请综合所有图片读取信息。',
       '只报告图片中实际可见的内容；缺失或看不清的字段填 null；不要编造数字。',
     ].join('\n'),
     [
-      '请识别这张食品包装图片：',
+      '请识别这些食品包装图片：',
       '1. productName：产品名称（若可见）',
       '2. isLiquid：根据包装形态和标签基准判断是否为液体食品（按每100mL标注的为 true）',
       '3. ingredients：配料表中列出的全部配料，按原文顺序，逐项拆分',
       '4. additives：其中属于食品添加剂的条目（包括括号内标注的添加剂，如"乳化剂(单，双甘油脂肪酸酯)"应提取"单，双甘油脂肪酸酯"），逐项列出',
       '5. nutritionPer100g：营养成分表中每 100g（或每 100mL）的数值。能量若标注为 kJ 填 energyKj；若标注为千卡/kcal 填 energyKcal；两者都有则都填。蛋白质、脂肪、碳水化合物单位为 g，钠单位为 mg。表中没有的行填 null',
     ].join('\n'),
-    base64,
-    mediaType,
+    images,
     NUTRITION_SCHEMA
   );
 }
 
-/** 功能 3：识别热量（能量）行 */
+/** 功能 3：识别热量（能量）行（支持多张图片） */
 export function analyzeCalories(
   settings: ApiSettings,
-  base64: string,
-  mediaType: ImageMediaType
+  images: VisionImage[]
 ): Promise<CalorieScanResult> {
   return callVision<CalorieScanResult>(
     settings,
     [
       '你是一位专业的中国食品营养成分表识别助手，专注于读取"能量"行。',
+      '用户可能上传多张图片，营养成分表可能在任意一张中。',
       '只报告图片中实际可见的内容；缺失字段填 null；不要编造数字。',
     ].join('\n'),
     [
-      '请读取这张食品包装图片中营养成分表的"能量"行：',
+      '请读取这些食品包装图片中营养成分表的"能量"行：',
       '1. productName：产品名称（若可见）',
       '2. energyKj / energyKcal：能量数值（kJ 填 energyKj，千卡/kcal 填 energyKcal，都有则都填）',
       '3. basis：该能量的标注基准，如"每100g"、"每100mL"或"每份"',
-      '4. servingSizeG：若按"每份"标注，填写每份的克数；否则填 null',
+      '4. servingSizeG：若按"每份"标注，填写每份的克数；否则 null',
     ].join('\n'),
-    base64,
-    mediaType,
+    images,
     CALORIE_SCHEMA
   );
 }

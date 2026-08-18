@@ -71,11 +71,15 @@ export function extractJson(text: string): unknown {
   return JSON.parse(candidate.slice(start, end + 1));
 }
 
+export interface VisionImage {
+  base64: string;
+  mediaType: ImageMediaType;
+}
+
 async function openaiCompatVision<T>(
   settings: ApiSettings,
   prompt: string,
-  base64: string,
-  mediaType: ImageMediaType,
+  images: VisionImage[],
   schema: { [key: string]: unknown }
 ): Promise<T> {
   if (!settings.baseURL) throw new Error('未配置接口地址（baseURL）');
@@ -94,10 +98,10 @@ async function openaiCompatVision<T>(
         {
           role: 'user',
           content: [
-            {
+            ...images.map((img) => ({
               type: 'image_url',
-              image_url: { url: `data:${mediaType};base64,${base64}` },
-            },
+              image_url: { url: `data:${img.mediaType};base64,${img.base64}` },
+            })),
             {
               type: 'text',
               text: `${prompt}\n\n只输出符合以下 JSON Schema 的纯 JSON，不要输出任何其他文字：\n${JSON.stringify(schema)}`,
@@ -171,7 +175,7 @@ export const CALORIE_SCHEMA = {
 };
 
 const INGREDIENT_PROMPT = [
-  '请识别这张中国食品包装图片中的"配料表"和"营养成分表"：',
+  '请识别这些中国食品包装图片中的"配料表"和"营养成分表"（可能分布在不同图片中，请综合读取）：',
   '1. productName：产品名称（若可见）',
   '2. isLiquid：是否为液体食品（营养成分表按每100mL标注的为 true）',
   '3. ingredients：配料表全部配料，按原文顺序逐项拆分',
@@ -181,7 +185,7 @@ const INGREDIENT_PROMPT = [
 ].join('\n');
 
 const CALORIE_PROMPT = [
-  '请读取这张中国食品包装图片中营养成分表的"能量"行：',
+  '请读取这些中国食品包装图片中营养成分表的"能量"行（营养成分表可能在任意一张图中）：',
   '1. productName：产品名称（若可见）',
   '2. energyKj / energyKcal：能量数值（kJ 填 energyKj，千卡填 energyKcal，都有则都填）',
   '3. basis：标注基准，如"每100g"、"每100mL"或"每份"',
@@ -191,34 +195,30 @@ const CALORIE_PROMPT = [
 
 export function analyzeIngredientsWithProvider(
   settings: ApiSettings & { provider: ProviderId },
-  base64: string,
-  mediaType: ImageMediaType
+  images: VisionImage[]
 ): Promise<IngredientScanResult> {
   if (settings.provider === 'claude') {
-    return analyzeIngredients(settings, base64, mediaType);
+    return analyzeIngredients(settings, images);
   }
   return openaiCompatVision<IngredientScanResult>(
     settings,
     INGREDIENT_PROMPT,
-    base64,
-    mediaType,
+    images,
     NUTRITION_SCHEMA
   );
 }
 
 export function analyzeCaloriesWithProvider(
   settings: ApiSettings & { provider: ProviderId },
-  base64: string,
-  mediaType: ImageMediaType
+  images: VisionImage[]
 ): Promise<CalorieScanResult> {
   if (settings.provider === 'claude') {
-    return analyzeCalories(settings, base64, mediaType);
+    return analyzeCalories(settings, images);
   }
   return openaiCompatVision<CalorieScanResult>(
     settings,
     CALORIE_PROMPT,
-    base64,
-    mediaType,
+    images,
     CALORIE_SCHEMA
   );
 }

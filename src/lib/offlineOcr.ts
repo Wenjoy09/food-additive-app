@@ -15,21 +15,36 @@ export async function recognizeText(
   input: HTMLCanvasElement | string,
   onProgress?: OcrProgressFn
 ): Promise<string> {
+  const texts = await recognizeManyTexts([input], (_i, s, p) => onProgress?.(s, p));
+  return texts[0] ?? '';
+}
+
+/** 批量识别多张图片：worker 只创建一次，逐张识别 */
+export async function recognizeManyTexts(
+  inputs: (HTMLCanvasElement | string)[],
+  onProgress?: (index: number, status: string, progress: number) => void
+): Promise<string[]> {
   const { createWorker, OEM } = await import('tesseract.js');
   // tesseract 的 worker 运行在 blob: URL 中，相对路径无法解析，必须传绝对 URL；
   // 以当前目录为基准，兼容部署在子路径（如 GitHub Pages 的 /<repo>/）
   const base = new URL('./', window.location.href).href;
+  let current = 0; // 当前正在识别的图片序号，供 logger 使用
   const worker = await createWorker(['chi_sim', 'eng'], OEM.LSTM_ONLY, {
     workerPath: `${base}tesseract/worker.min.js`,
     corePath: `${base}tesseract`,
     langPath: `${base}tesseract/langdata`,
     // 语言包为未压缩的 .traineddata，关闭默认的 .gz 后缀请求
     gzip: false,
-    logger: (m) => onProgress?.(m.status ?? '', m.progress ?? 0),
+    logger: (m) => onProgress?.(current, m.status ?? '', m.progress ?? 0),
   });
   try {
-    const { data } = await worker.recognize(input);
-    return normalizeOcrText(data.text ?? '');
+    const out: string[] = [];
+    for (let i = 0; i < inputs.length; i++) {
+      current = i;
+      const { data } = await worker.recognize(inputs[i]);
+      out.push(normalizeOcrText(data.text ?? ''));
+    }
+    return out;
   } finally {
     await worker.terminate();
   }

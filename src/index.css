@@ -406,44 +406,33 @@ body {
 }
 
 /* ---------- Image uploader ---------- */
-.upload-area {
-  border: 1.5px dashed var(--gray-300);
-  border-radius: var(--radius);
-  background: #fff;
-  padding: 24px 16px;
-  text-align: center;
-  cursor: pointer;
-  color: var(--gray-500);
-  font-size: 13px;
+.upload-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.upload-area svg {
-  width: 36px;
-  height: 36px;
-  color: var(--green-600);
-  margin-bottom: 8px;
-}
-
-.upload-preview {
+.upload-tile {
   position: relative;
-  margin-bottom: 12px;
+  width: calc(33.33% - 7px);
 }
 
-.upload-preview img {
+.upload-tile img {
   width: 100%;
-  max-height: 260px;
-  object-fit: contain;
-  border-radius: var(--radius);
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
   border: 1px solid var(--gray-200);
   background: var(--gray-900);
 }
 
+.upload-tile .remove-btn,
 .upload-preview .remove-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
+  top: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: none;
   background: rgba(0, 0, 0, 0.55);
@@ -454,9 +443,40 @@ body {
   cursor: pointer;
 }
 
+.upload-tile .remove-btn svg,
 .upload-preview .remove-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+}
+
+.upload-add {
+  flex: 1 1 120px;
+  min-height: 110px;
+  border: 1.5px dashed var(--gray-300);
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--gray-500);
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+}
+
+.upload-add svg {
+  width: 26px;
+  height: 26px;
+  color: var(--green-600);
+}
+
+.upload-add .upload-hint {
+  font-size: 11px;
+  color: var(--gray-500);
+  line-height: 1.5;
 }
 
 /* ---------- Loading ---------- */

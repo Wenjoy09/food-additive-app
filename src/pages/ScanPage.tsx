@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AlertTriangle, Loader2, ScanText, Sparkles } from 'lucide-react';
 import { ApiAuthError } from '@/lib/claudeApi';
 import { analyzeIngredientsWithProvider } from '@/lib/visionProviders';
-import { recognizeText, textToIngredientResult } from '@/lib/offlineOcr';
+import { recognizeManyTexts, textToIngredientResult } from '@/lib/offlineOcr';
 import { preprocessForOcr } from '@/lib/imagePreprocess';
 import { matchAdditives } from '@/lib/additives';
 import { SAMPLE_INGREDIENT_RESULT } from '@/data/sampleResults';
@@ -19,7 +19,7 @@ type Phase = 'idle' | 'loading' | 'done' | 'error';
 
 export default function ScanPage({ onOpenDetail }: Props) {
   const { current, toApiSettings } = useSettings();
-  const [image, setImage] = useState<SelectedImage | null>(null);
+  const [images, setImages] = useState<SelectedImage[]>([]);
   const [phase, setPhase] = useState<Phase>('idle');
   const [loadingText, setLoadingText] = useState('');
   const [error, setError] = useState('');
@@ -31,7 +31,7 @@ export default function ScanPage({ onOpenDetail }: Props) {
   const hasKey = current.apiKey.trim().length > 0;
 
   async function analyze() {
-    if (!image || !hasKey) return;
+    if (!images.length || !hasKey) return;
     setPhase('loading');
     setLoadingText('AI 正在识别配料表与营养成分表…通常需要 10-30 秒');
     setError('');
@@ -41,8 +41,7 @@ export default function ScanPage({ onOpenDetail }: Props) {
     try {
       const res = await analyzeIngredientsWithProvider(
         toApiSettings(),
-        image.base64,
-        image.mediaType
+        images.map((i) => ({ base64: i.base64, mediaType: i.mediaType }))
       );
       setResult(res);
       setPhase('done');
@@ -53,30 +52,37 @@ export default function ScanPage({ onOpenDetail }: Props) {
     }
   }
 
-  /** 离线 OCR 备用：浏览器本地识别，无需 Key */
+  /** 离线 OCR 备用：浏览器本地识别，无需 Key；支持多张合并 */
   async function analyzeOffline() {
-    if (!image) return;
+    if (!images.length) return;
     setPhase('loading');
-    setLoadingText('离线 OCR 正在识别（首次需加载识别引擎）…');
+    setLoadingText('离线 OCR 预处理图片…');
     setError('');
     setAuthProblem(false);
     setIsSample(false);
     setIsOcr(true);
     try {
-      const canvas = await preprocessForOcr(image.base64, image.mediaType);
-      const text = await recognizeText(canvas, (status, progress) => {
+      const canvases = [];
+      for (const img of images) {
+        canvases.push(await preprocessForOcr(img.base64, img.mediaType));
+      }
+      const total = canvases.length;
+      const texts = await recognizeManyTexts(canvases, (i, status, progress) => {
         if (status.includes('recognizing')) {
-          setLoadingText(`离线 OCR 识别中… ${Math.round(progress * 100)}%`);
+          setLoadingText(
+            `离线 OCR 识别第 ${i + 1}/${total} 张… ${Math.round(progress * 100)}%`
+          );
         } else if (status.includes('loading language')) {
           setLoadingText('正在加载离线识别语言包…');
         }
       });
-      if (!text.trim()) {
-        setError('离线 OCR 未能识别出文字，请换一张更清晰、光线充足的照片');
+      const joined = texts.join('\n\n').trim();
+      if (!joined) {
+        setError('离线 OCR 未能识别出文字，请换更清晰、光线充足的照片');
         setPhase('error');
         return;
       }
-      setResult(textToIngredientResult(text));
+      setResult(textToIngredientResult(joined));
       setPhase('done');
     } catch (e) {
       setError(e instanceof Error ? e.message : '离线识别失败');
@@ -85,7 +91,7 @@ export default function ScanPage({ onOpenDetail }: Props) {
   }
 
   function useSample() {
-    setImage(null);
+    setImages([]);
     setError('');
     setAuthProblem(false);
     setResult(SAMPLE_INGREDIENT_RESULT);
@@ -100,7 +106,7 @@ export default function ScanPage({ onOpenDetail }: Props) {
     setIsSample(false);
     setIsOcr(false);
     setError('');
-    setImage(null);
+    setImages([]);
   }
 
   if (phase === 'done' && result) {
@@ -131,7 +137,7 @@ export default function ScanPage({ onOpenDetail }: Props) {
     <div>
       <h2 className="page-title">配料表扫描</h2>
       <p className="page-desc">
-        上传食品包装照片，自动识别配料表与营养成分表，评估添加剂与健康情况
+        上传食品包装照片（最多 3 张），自动识别配料表与营养成分表，评估添加剂与健康情况
       </p>
 
       {!hasKey && (
@@ -152,7 +158,7 @@ export default function ScanPage({ onOpenDetail }: Props) {
         </div>
       ) : (
         <>
-          <ImageUploader selected={image} onSelect={setImage} />
+          <ImageUploader selected={images} onSelect={setImages} max={3} />
 
           {phase === 'error' && (
             <div className="alert alert-error" style={{ marginTop: 12 }}>
@@ -170,11 +176,19 @@ export default function ScanPage({ onOpenDetail }: Props) {
           )}
 
           <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <button className="btn btn-primary" disabled={!image || !hasKey} onClick={analyze}>
+            <button
+              className="btn btn-primary"
+              disabled={!images.length || !hasKey}
+              onClick={analyze}
+            >
               <Sparkles style={{ width: 17, height: 17 }} />
               AI 视觉分析
             </button>
-            <button className="btn btn-secondary" disabled={!image} onClick={analyzeOffline}>
+            <button
+              className="btn btn-secondary"
+              disabled={!images.length}
+              onClick={analyzeOffline}
+            >
               <ScanText style={{ width: 17, height: 17 }} />
               离线 OCR 识别（免费备用）
             </button>
