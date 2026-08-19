@@ -120,6 +120,10 @@ export default function CaloriesPage() {
       per100 = (kcalPerRef / res.servingSizeG) * 100;
     }
     setKcalPer100g(per100);
+    // 识别到商品总净含量（如 "210g/份"、"净含量：500g"）时自动填入，替代默认 300g
+    if (res.totalWeightG != null && res.totalWeightG > 0) {
+      setTotalGrams(String(res.totalWeightG));
+    }
     setPhase('ready');
   }
 
@@ -220,6 +224,11 @@ export default function CaloriesPage() {
               onChange={(e) => setTotalGrams(e.target.value)}
               placeholder="如 300"
             />
+            {!manualMode && scan?.totalWeightG != null && (
+              <p style={{ fontSize: 12, color: 'var(--gray-500)', margin: '6px 0 0' }}>
+                已按识别到的总净含量 {scan.totalWeightG}g 自动填入，可手动修改
+              </p>
+            )}
 
             {totalKcal != null && (
               <div className="big-number">

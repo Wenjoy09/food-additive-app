@@ -69,8 +69,9 @@ const CALORIE_SCHEMA = {
     energyKcal: { type: ['number', 'null'] },
     basis: { type: ['string', 'null'] },
     servingSizeG: { type: ['number', 'null'] },
+    totalWeightG: { type: ['number', 'null'] },
   },
-  required: ['productName', 'energyKj', 'energyKcal', 'basis', 'servingSizeG'],
+  required: ['productName', 'energyKj', 'energyKcal', 'basis', 'servingSizeG', 'totalWeightG'],
   additionalProperties: false,
 } as const;
 
@@ -180,6 +181,7 @@ export function analyzeCalories(
       '2. energyKj / energyKcal：能量数值（kJ 填 energyKj，千卡/kcal 填 energyKcal，都有则都填）',
       '3. basis：该能量的标注基准，如"每100g"、"每100mL"或"每份"',
       '4. servingSizeG：若按"每份"标注，填写每份的克数；否则 null',
+      '5. totalWeightG：商品总净含量（克）。注意从商品标题/规格中寻找，如"6只 210g/份"填 210；"净含量：500g"填 500；找不到填 null',
     ].join('\n'),
     images,
     CALORIE_SCHEMA

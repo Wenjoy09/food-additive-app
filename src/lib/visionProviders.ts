@@ -169,8 +169,9 @@ export const CALORIE_SCHEMA = {
     energyKcal: { type: ['number', 'null'] },
     basis: { type: ['string', 'null'] },
     servingSizeG: { type: ['number', 'null'] },
+    totalWeightG: { type: ['number', 'null'] },
   },
-  required: ['productName', 'energyKj', 'energyKcal', 'basis', 'servingSizeG'],
+  required: ['productName', 'energyKj', 'energyKcal', 'basis', 'servingSizeG', 'totalWeightG'],
   additionalProperties: false,
 };
 
@@ -190,6 +191,7 @@ const CALORIE_PROMPT = [
   '2. energyKj / energyKcal：能量数值（kJ 填 energyKj，千卡填 energyKcal，都有则都填）',
   '3. basis：标注基准，如"每100g"、"每100mL"或"每份"',
   '4. servingSizeG：若按"每份"标注，填每份克数；否则 null',
+  '5. totalWeightG：商品总净含量（克），从商品标题/规格中找，如"6只 210g/份"填 210、"净含量：500g"填 500；找不到填 null',
   '只报告图中可见内容，看不清的填 null，不要编造。',
 ].join('\n');
 

@@ -33,4 +33,5 @@ export const SAMPLE_CALORIE_RESULT: CalorieScanResult = {
   energyKcal: null,
   basis: '每100g',
   servingSizeG: null,
+  totalWeightG: null,
 };

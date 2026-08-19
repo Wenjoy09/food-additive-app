@@ -79,6 +79,8 @@ export interface CalorieScanResult {
   basis: string | null;
   /** 每份克数（若标注按份计） */
   servingSizeG: number | null;
+  /** 商品总净含量（克），如 "210g/份" 中的 210 */
+  totalWeightG: number | null;
 }
 
 /** 健康标签 */

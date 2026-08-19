@@ -83,6 +83,18 @@ export function parseIngredientsText(text: string): string[] {
     .filter((s) => s.length > 0 && s.length < 30);
 }
 
+/** 从文本中提取总净含量（克），如 "210g/份"、"净含量：500克" */
+export function parseTotalWeightG(text: string): number | null {
+  const compact = text.replace(/\s+/g, '');
+  const m =
+    /净含量[::]?([0-9]+(?:\.[0-9]+)?)(?:克|g|G)/.exec(compact) ??
+    /([0-9]+(?:\.[0-9]+)?)(?:克|g|G)\s*[/／]?\s*份/.exec(compact) ??
+    /[×xX]\s*[0-9]+\s*(?:克|g|G)\s*[=＝]\s*([0-9]+(?:\.[0-9]+)?)(?:克|g|G)/.exec(compact);
+  if (!m) return null;
+  const v = parseFloat(m[1]);
+  return Number.isFinite(v) && v > 0 ? v : null;
+}
+
 /** OCR 文本 → 热量识别结果 */
 export function textToCalorieResult(text: string): CalorieScanResult {
   const n = parseNutritionText(text);
@@ -92,5 +104,6 @@ export function textToCalorieResult(text: string): CalorieScanResult {
     energyKcal: n?.energyKcal ?? null,
     basis: parseIsLiquid(text) ? '每100mL' : '每100g',
     servingSizeG: null,
+    totalWeightG: parseTotalWeightG(text),
   };
 }
