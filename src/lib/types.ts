@@ -99,5 +99,53 @@ export interface MatchedAdditive {
   additive: Additive | null;
 }
 
+/** 常见食物条目（非包装食品） */
+export interface FoodItem {
+  id: string;
+  name: string;
+  category: FoodCategory;
+  /** 每 100g 可食部分热量（千卡） */
+  kcalPer100g: number;
+  /** 升糖指数；肉蛋水产等几乎不含碳水的食物为 null（不适用） */
+  gi: number | null;
+  note: string | null;
+}
+
+export type FoodCategory =
+  | '蔬菜'
+  | '水果'
+  | '肉蛋禽'
+  | '水产'
+  | '谷物主食'
+  | '豆类坚果'
+  | '乳品';
+
+export const FOOD_CATEGORIES: FoodCategory[] = [
+  '蔬菜',
+  '水果',
+  '肉蛋禽',
+  '水产',
+  '谷物主食',
+  '豆类坚果',
+  '乳品',
+];
+
+/** 升糖指数分级（国际通用标准） */
+export type GiLevel = 'low' | 'medium' | 'high' | 'na';
+
+export function giLevel(gi: number | null): GiLevel {
+  if (gi == null) return 'na';
+  if (gi <= 55) return 'low';
+  if (gi <= 69) return 'medium';
+  return 'high';
+}
+
+export const GI_LEVEL_TEXT: Record<GiLevel, string> = {
+  low: '低 GI',
+  medium: '中 GI',
+  high: '高 GI',
+  na: 'GI 不适用',
+};
+
 export const SCAN_MODE = 'scan' as const;
 export type ImageMediaType = 'image/jpeg' | 'image/png' | 'image/webp' | 'image/gif';
