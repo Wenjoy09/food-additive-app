@@ -1,28 +1,42 @@
 import { useMemo, useState } from 'react';
-import { Apple, Search } from 'lucide-react';
+import { Apple, ChevronLeft, Search } from 'lucide-react';
 import {
   FOOD_CATEGORIES,
   GI_LEVEL_TEXT,
   giLevel,
   type FoodItem,
 } from '@/lib/types';
-import { filterFoodsByCategory, searchFoods, sortFoods, type FoodSortKey } from '@/lib/foods';
+import { filterFoodsByCategory, getAllFoods, searchFoods, sortFoods, type FoodSortKey } from '@/lib/foods';
 
 export default function FoodsPage() {
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<FoodSortKey>('default');
+  const [detailId, setDetailId] = useState<string | null>(null);
 
   const results = useMemo(
     () => sortFoods(filterFoodsByCategory(searchFoods(keyword), category), sortKey),
     [keyword, category, sortKey]
   );
 
+  const detail = detailId ? getAllFoods().find((f) => f.id === detailId) ?? null : null;
+
+  if (detail) {
+    return (
+      <div>
+        <button className="back-btn" onClick={() => setDetailId(null)}>
+          <ChevronLeft /> 返回列表
+        </button>
+        <FoodDetail food={detail} />
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2 className="page-title">常见食物库</h2>
       <p className="page-desc">
-        瓜果蔬菜、肉蛋水产等常见食物每 100g 热量与升糖指数（GI）
+        瓜果蔬菜、肉蛋水产等常见食物每 100g 热量与升糖指数（GI），点进去查看营养素含量
       </p>
 
       <div className="search-box">
@@ -72,7 +86,7 @@ export default function FoodsPage() {
       {results.length === 0 ? (
         <div className="empty-text">没有找到匹配的食物</div>
       ) : (
-        results.map((f) => <FoodRow key={f.id} food={f} />)
+        results.map((f) => <FoodRow key={f.id} food={f} onOpen={() => setDetailId(f.id)} />)
       )}
 
       <p className="nutrition-note" style={{ margin: '12px 4px' }}>
@@ -84,13 +98,13 @@ export default function FoodsPage() {
   );
 }
 
-function FoodRow({ food }: { food: FoodItem }) {
+function FoodRow({ food, onOpen }: { food: FoodItem; onOpen: () => void }) {
   const level = giLevel(food.gi);
   const badgeClass =
     level === 'low' ? 'badge' : level === 'medium' ? 'badge warn-mid' : level === 'high' ? 'badge warn' : 'badge gray';
 
   return (
-    <div className="food-item">
+    <button className="food-item" onClick={onOpen}>
       <div className="row">
         <p className="name">
           <Apple className="food-icon" />
@@ -108,6 +122,57 @@ function FoodRow({ food }: { food: FoodItem }) {
         <span className="badge gray">{food.category}</span>
       </div>
       {food.note && <p className="note">{food.note}</p>}
+    </button>
+  );
+}
+
+function FoodDetail({ food }: { food: FoodItem }) {
+  const level = giLevel(food.gi);
+  const badgeClass =
+    level === 'low' ? 'badge' : level === 'medium' ? 'badge warn-mid' : level === 'high' ? 'badge warn' : 'badge gray';
+
+  return (
+    <div>
+      <div className="card">
+        <div className="row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h2 style={{ margin: 0, fontSize: 20 }}>{food.name}</h2>
+          <span className={badgeClass}>{GI_LEVEL_TEXT[level]}</span>
+        </div>
+        <div className="metrics" style={{ display: 'flex', gap: 12, marginTop: 10, flexWrap: 'wrap' }}>
+          <span className="metric">
+            <b>{food.kcalPer100g}</b> 千卡/100g
+          </span>
+          <span className="metric">
+            GI <b>{food.gi ?? '—'}</b>
+          </span>
+          <span className="badge gray">{food.category}</span>
+        </div>
+        {food.note && <p className="note" style={{ marginTop: 8 }}>{food.note}</p>}
+      </div>
+
+      <div className="card">
+        <p className="card-title">营养素含量（每 100g 可食部）</p>
+        {food.nutrients && food.nutrients.length > 0 ? (
+          <table className="nutrition-table">
+            <tbody>
+              {food.nutrients.map((n) => (
+                <tr key={n.name}>
+                  <td>{n.name}</td>
+                  <td>
+                    {n.amount} {n.unit}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p style={{ fontSize: 13, color: 'var(--gray-500)', margin: 0 }}>暂无营养素数据</p>
+        )}
+      </div>
+
+      <p className="nutrition-note" style={{ margin: '4px 4px 0' }}>
+        数据为常见平均值，实际因品种、成熟度、烹饪方式而异，仅供参考。
+      </p>
     </div>
   );
 }

@@ -109,6 +109,14 @@ export interface FoodItem {
   /** 升糖指数；肉蛋水产等几乎不含碳水的食物为 null（不适用） */
   gi: number | null;
   note: string | null;
+  /** 营养素含量（每 100g 可食部，常见平均值） */
+  nutrients?: FoodNutrient[];
+}
+
+export interface FoodNutrient {
+  name: string;
+  amount: number;
+  unit: 'g' | 'mg' | 'μg';
 }
 
 export type FoodCategory =
