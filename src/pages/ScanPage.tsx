@@ -125,6 +125,7 @@ export default function ScanPage({ onOpenDetail }: Props) {
           matched={matchAdditives(result.additives)}
           isSample={isSample}
           onOpenDetail={onOpenDetail}
+          onChange={setResult}
         />
         <button className="btn btn-ghost" onClick={reset}>
           再扫描一次

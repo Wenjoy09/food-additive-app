@@ -32,6 +32,10 @@ export default function CaloriesPage() {
   /** 手动模式：总克数 */
   const [manualGrams, setManualGrams] = useState('300');
   const [totalGrams, setTotalGrams] = useState('300');
+  /** 识别结果能量修正 */
+  const [energyEdit, setEnergyEdit] = useState(false);
+  const [editKj, setEditKj] = useState('');
+  const [editKcal, setEditKcal] = useState('');
 
   const hasKey = current.apiKey.trim().length > 0;
 
@@ -201,8 +205,22 @@ export default function CaloriesPage() {
             </div>
           )}
           <div className="card">
-            <p className="card-title">{scan?.productName ?? '手动输入的食品'}</p>
-            <p style={{ fontSize: 13, color: 'var(--gray-500)', margin: '0 0 4px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <p className="card-title" style={{ margin: 0 }}>{scan?.productName ?? '手动输入的食品'}</p>
+              {!manualMode && !energyEdit && (
+                <button
+                  className="edit-btn"
+                  onClick={() => {
+                    setEditKcal(String(Math.round(kcalPer100g!)));
+                    setEditKj(String(Math.round(kcalPer100g! * 4.184)));
+                    setEnergyEdit(true);
+                  }}
+                >
+                  <Pencil style={{ width: 13, height: 13 }} /> 修正
+                </button>
+              )}
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--gray-500)', margin: '4px 0 4px' }}>
               {manualMode
                 ? `每 100g = ${Math.round(kcalPer100g * 4.184)} 千焦 ≈ ${Math.round(kcalPer100g)} 千卡`
                 : `识别结果：每 100g ≈ ${Math.round(kcalPer100g)} 千卡${
@@ -211,6 +229,50 @@ export default function CaloriesPage() {
                       : ''
                   }`}
             </p>
+
+            {energyEdit && (
+              <div className="edit-grid" style={{ marginTop: 8 }}>
+                <label className="edit-field">
+                  <span>每 100g 能量 (kJ)</span>
+                  <input
+                    className="input"
+                    type="number"
+                    inputMode="decimal"
+                    value={editKj}
+                    onChange={(e) => setEditKj(e.target.value)}
+                  />
+                </label>
+                <label className="edit-field">
+                  <span>每 100g 能量 (千卡)</span>
+                  <input
+                    className="input"
+                    type="number"
+                    inputMode="decimal"
+                    value={editKcal}
+                    onChange={(e) => setEditKcal(e.target.value)}
+                  />
+                </label>
+              </div>
+            )}
+            {energyEdit && (
+              <div style={{ display: 'flex', gap: 10, marginTop: 10 }}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    const kcal = parseFloat(editKcal);
+                    const kj = parseFloat(editKj);
+                    if (Number.isFinite(kcal) && kcal > 0) setKcalPer100g(kcal);
+                    else if (Number.isFinite(kj) && kj > 0) setKcalPer100g(kj / 4.184);
+                    setEnergyEdit(false);
+                  }}
+                >
+                  保存并重算
+                </button>
+                <button className="btn btn-ghost" onClick={() => setEnergyEdit(false)}>
+                  取消
+                </button>
+              </div>
+            )}
 
             <label className="field-label" style={{ marginTop: 12 }}>
               这份食品一共多少克？
