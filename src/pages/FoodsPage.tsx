@@ -170,6 +170,63 @@ function FoodDetail({ food }: { food: FoodItem }) {
         )}
       </div>
 
+      {food.benefits && food.benefits.length > 0 && (
+        <div className="card">
+          <p className="card-title">主要营养元素及功能</p>
+          {food.benefits.map((b, i) => (
+            <div className="benefit-row" key={b.name}>
+              <span className="benefit-idx">{i + 1}</span>
+              <div>
+                <p className="benefit-name">{b.name}</p>
+                <p className="benefit-desc">{b.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {food.advice && (
+        <div className="card">
+          <p className="card-title">食用建议与注意事项</p>
+          {food.advice.cooking.length > 0 && (
+            <div className="advice-block">
+              <h4>烹饪方式</h4>
+              {food.advice.cooking.map((t) => (
+                <p key={t}>• {t}</p>
+              ))}
+            </div>
+          )}
+          {food.advice.pairing.length > 0 && (
+            <div className="advice-block">
+              <h4>搭配建议</h4>
+              {food.advice.pairing.map((t) => (
+                <p key={t}>• {t}</p>
+              ))}
+            </div>
+          )}
+          {food.advice.caution.length > 0 && (
+            <div className="advice-block">
+              <h4>注意人群</h4>
+              {food.advice.caution.map((t) => (
+                <p key={t} className="caution">• {t}</p>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {food.myths && food.myths.length > 0 && (
+        <div className="card">
+          <p className="card-title">常见误区</p>
+          {food.myths.map((m) => (
+            <div className="myth-block" key={m.q}>
+              <p className="myth-q">❓ {m.q}</p>
+              <p className="myth-a">{m.a}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
       <p className="nutrition-note" style={{ margin: '4px 4px 0' }}>
         数据为常见平均值，实际因品种、成熟度、烹饪方式而异，仅供参考。
       </p>

@@ -111,12 +111,34 @@ export interface FoodItem {
   note: string | null;
   /** 营养素含量（每 100g 可食部，常见平均值） */
   nutrients?: FoodNutrient[];
+  /** 主要营养元素及功能 */
+  benefits?: FoodBenefit[];
+  /** 食用建议与注意事项 */
+  advice?: FoodAdvice;
+  /** 常见误区 */
+  myths?: FoodMyth[];
 }
 
 export interface FoodNutrient {
   name: string;
   amount: number;
   unit: 'g' | 'mg' | 'μg';
+}
+
+export interface FoodBenefit {
+  name: string;
+  desc: string;
+}
+
+export interface FoodAdvice {
+  cooking: string[];
+  pairing: string[];
+  caution: string[];
+}
+
+export interface FoodMyth {
+  q: string;
+  a: string;
 }
 
 export type FoodCategory =

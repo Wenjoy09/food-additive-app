@@ -728,6 +728,80 @@ body {
   accent-color: var(--green-600);
 }
 
+/* ---------- Food detail sections ---------- */
+.benefit-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.benefit-idx {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green-100);
+  color: var(--green-700);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.benefit-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+
+.benefit-desc {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.advice-block {
+  margin-bottom: 12px;
+}
+
+.advice-block h4 {
+  font-size: 13px;
+  color: var(--gray-700);
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.advice-block p {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin: 0 0 4px;
+  line-height: 1.6;
+}
+
+.advice-block p.caution {
+  color: var(--amber-600);
+}
+
+.myth-block {
+  margin-bottom: 12px;
+}
+
+.myth-q {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.myth-a {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin: 0;
+  line-height: 1.6;
+}
+
 .radio-card {
   display: flex;
   align-items: center;
